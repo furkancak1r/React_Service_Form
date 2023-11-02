@@ -1,0 +1,24 @@
+.header-second-container {
+  height: 210px;
+}
+.header-second-box-2 {
+  border-left: 1px solid whitesmoke;
+  border-bottom: 1px solid whitesmoke;
+}
+.header-second-box-3 {
+  border-left: 1px solid whitesmoke;
+}
+.row-container {
+  height: 210px;
+}
+.first-row,
+.second-row {
+  height: 105px;
+}
+.first-row {
+  border-left: 1px solid whitesmoke;
+  border-bottom: 1px solid whitesmoke;
+}
+.second-row {
+  border-left: 1px solid whitesmoke;
+}
