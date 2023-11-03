@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const FormDataContext = createContext();
 
-export const useLanguage = () => {
+export const useFormData = () => {
   return useContext(FormDataContext);
 };
 

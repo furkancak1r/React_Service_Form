@@ -1,56 +1,50 @@
 import React from "react";
 import "./underHeaderFirstBox.css";
-import { useForm } from "react-hook-form";
+import {
+  UnderHeaderFirstBoxEnglishData,
+  UnderHeaderFirstBoxTurkishData,
+} from "./UnderHeaderFirstBoxDatas";
+import { useFormData } from "../../../contexts/formDataContext/formDataContext";
 
 export default function UnderHeaderFirstBox() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
+  const { FormData, FormDataFn } = useFormData();
+
+  const handleInputChange = (fieldName, event) => {
+    const value = event.target.value;
+    FormDataFn({ ...FormData, [fieldName]: value });
+  };
   return (
-    <form
-      className="under-header-first-box-form container"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      {[
-        "Müşteri Unvanı",
-        "İlgili Kişi",
-        "Adres",
-        "Şube",
-        "Sipariş No",
-        "Seri No",
-        "Ürün Açıklaması",
-        "Ürün Kategorisi",
-        "Ürün Markası",
-        "Model",
-      ].map((field, index) => (
+    <form className="under-header-first-box-form container">
+      {UnderHeaderFirstBoxTurkishData.map((field, index) => (
         <div className="row" key={index}>
           <div className="under-header-first-box-form-label box-borders col-4 d-flex align-items-center p-1">
-            <label htmlFor={field}>{field}</label>
+            <label htmlFor={UnderHeaderFirstBoxEnglishData[index]}>
+              {field}
+            </label>
           </div>
           <div className="under-header-first-box-form-label-inputs col-8 box-borders p-1">
-            {field === "Adres" ? (
-              <textarea id={field} {...register(field)} />
+            {UnderHeaderFirstBoxEnglishData[index] === "address" ? (
+              <textarea
+                autoComplete="off"
+                id={UnderHeaderFirstBoxEnglishData[index]}
+                onChange={(e) =>
+                  handleInputChange(UnderHeaderFirstBoxEnglishData[index], e)
+                }
+              />
             ) : (
               <input
-                id={field}
-                name={field}
+                autoComplete="off"
+                id={UnderHeaderFirstBoxEnglishData[index]}
+                name={UnderHeaderFirstBoxEnglishData[index]}
                 type="text"
-                {...register(field, {
-                  maxLength: field === "Müşteri Unvanı" ? 250 : 30,
-                })}
+                onChange={(e) =>
+                  handleInputChange(UnderHeaderFirstBoxEnglishData[index], e)
+                }
               />
             )}
           </div>
         </div>
       ))}
-      <div className="row d-flex justify-content-center align-items-center">
-        <input type="submit" />
-      </div>
     </form>
   );
-  
 }
