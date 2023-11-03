@@ -1,6 +1,7 @@
 import "./mainForm.css";
 import HeaderFirst from "../headerFirst/headerFirst";
 import HeaderSecond from "../headerSecond/headerSecond";
+import UnderHeaderFirstBox from "../underHeaderFirstBox/underHeaderFirstBox";
 function MainForm() {
   return (
     <div className="main-form-container container">
@@ -13,11 +14,14 @@ function MainForm() {
         </div>
       </div>
       <div className="row">
-        <div className="col-md-4 col-sm-4">1 of 3</div>
-        <div className="col-md-4 col-sm-4">2 of 3</div>
-        <div className="col-md-4 col-sm-4">3 of 3</div>
+        <div className="col-md-6 col-sm-6">
+          <UnderHeaderFirstBox />
+        </div>
+        <div className="col-md-6 col-sm-6">2 of 3</div>
       </div>
-    </div>
+   </div>
+
+   
   );
 }
 export default MainForm;

@@ -1,14 +1,14 @@
 .toggle {
-  font-size: 1rem; /* Font boyutunu istediğiniz değere ayarlayın */
+  font-size: 1rem;
   border: 0.125em solid currentColor;
   border-radius: 2em;
   cursor: pointer;
   display: block;
   height: 2em;
   position: absolute;
-  top: 1rem; /* Sağ üst köşe yükseklik değeri */
-  right: 1rem; /* Sağ üst köşe sağa olan uzaklık değeri */
-  width: 3.75em; /* Genişliği istediğiniz değere ayarlayın */
+  top: 1rem;
+  right: 1rem;
+  width: 3.75em;
 }
 
 @media screen and (max-width: 620px) {
@@ -17,6 +17,7 @@
     font-size: 0.8rem;
   }
 }
+
 .toggle span {
   background-color: currentColor;
   border-radius: 2em;
@@ -97,4 +98,10 @@ body:has(#darkmode-toggle:checked) .box-borders-bottom {
 }
 body:has(#darkmode-toggle:checked) .header-first-logo {
   filter: invert(1);
+}
+body:has(#darkmode-toggle:checked) input {
+  color: black;
+}
+body:has(#darkmode-toggle:checked) textarea {
+  color: black;
 }
