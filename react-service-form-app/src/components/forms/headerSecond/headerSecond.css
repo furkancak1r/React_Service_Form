@@ -12,8 +12,8 @@
 
 
 @media screen and (max-width: 620px) {
-
+  .header-second-first-row,
   .header-second-second-row {
-    height: 55px;
+    height: 83.675px;
   }
 }

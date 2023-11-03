@@ -81,6 +81,7 @@ html {
   overflow: hidden;
   height: 100vh;
   color: whitesmoke;
+  overflow: auto;
 }
 
 body:has(#darkmode-toggle:checked) {

@@ -18,7 +18,7 @@ export default function HeaderSecond() {
   }, []);
   const getHeaderFirstRowClassName = () => {
     if (window.innerWidth <= 620) {
-      return "header-second-first-row box-borders-bottom box-borders-top row d-flex justify-content-center align-items-center";
+      return "header-second-first-row box-borders-bottom row d-flex justify-content-center align-items-center";
     } else {
       return "header-second-first-row box-borders-left box-borders-bottom row d-flex justify-content-center align-items-center";
     }
@@ -33,7 +33,7 @@ export default function HeaderSecond() {
   return (
     <div className="header-second-container container box-borders">
       <div className="row-container row">
-        <div className="col-md-6 d-flex justify-content-center align-items-center">
+        <div className="col-md-6 d-flex box-borders-bottom justify-content-center align-items-center">
           <h2 className=" text-center">SERVİS RAPORU</h2>
         </div>
         <div className="col-md-6">
