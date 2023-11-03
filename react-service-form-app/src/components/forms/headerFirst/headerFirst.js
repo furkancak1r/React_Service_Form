@@ -5,7 +5,11 @@ export default function HeaderFirst() {
   return (
     <div className="header-first-container container box-borders">
       <div className="header-first-row-1 d-flex justify-content-center row">
-        <img className="header-first-logo" src="prosoLogo.png" alt="Proso Logo" />
+        <img
+          className="header-first-logo"
+          src="prosoLogo.png"
+          alt="Proso Logo"
+        />
       </div>
       <div className="header-first-row-2 row d-flex justify-content-center align-items-center ">
         <p className="header-first-info text-center">
