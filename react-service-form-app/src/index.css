@@ -1,5 +1,17 @@
 
 .box-borders{
   border: 1px solid whitesmoke;
+}
+h1, h2, h3, h4, h5, h6{
+  margin: 0 !important;
+}
+.box-borders-left{
+  border-left: 1px solid whitesmoke;
 
+}
+.box-borders-bottom{
+  border-bottom: 1px solid whitesmoke;
+}
+.box-borders-top{
+  border-top: 1px solid whitesmoke;
 }

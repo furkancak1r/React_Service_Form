@@ -1,0 +1,96 @@
+/*
+  📣 Note: all sizes are in ems, so change the .toggle font-size to
+  scale to whatever size you need.
+*/
+
+.toggle {
+  font-size: 1rem; /* Font boyutunu istediğiniz değere ayarlayın */
+  border: 0.125em solid currentColor;
+  border-radius: 2em;
+  cursor: pointer;
+  display: block;
+  height: 2em;
+  position: absolute;
+  top: 10px; /* Sağ üst köşe yükseklik değeri */
+  right: 10px; /* Sağ üst köşe sağa olan uzaklık değeri */
+  width: 3.75em; /* Genişliği istediğiniz değere ayarlayın */
+}
+
+.toggle span {
+  background-color: currentColor;
+  border-radius: 2em;
+  display: block;
+  height: 1.5em;
+  left: 0.25em;
+  overflow: hidden;
+  position: absolute;
+  top: 0.15em;
+  text-indent: -9999px;
+  transition: left 0.25s;
+  width: 1.5em;
+  z-index: 2;
+}
+
+.toggle::before,
+.toggle::after {
+  content: "";
+  display: block;
+  border-radius: 1em;
+  position: absolute;
+  z-index: 1;
+}
+
+.toggle::after {
+  box-shadow: 0.25em 0.25em #5901d8;
+  height: 1.125em;
+  left: 0.1em;
+  top: 0.125em;
+  width: 1.125em;
+}
+
+.toggle::before {
+  background-color: #ffc409;
+  height: 0.625em;
+  outline: 0.25em dotted #ffc409;
+  outline-offset: 0.125em;
+  right: 0.7em;
+  top: 0.7em;
+  width: 0.625em;
+}
+
+input:checked ~ .toggle span {
+  left: 1.8em;
+}
+
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+body {
+  transition: background-color 1s;
+  color: whitesmoke;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(140deg, rgb(0, 0, 0) 0%, rgb(29, 1, 11) 100%);
+  overflow: hidden;
+  height: 100vh;
+  color: whitesmoke;
+}
+
+body:has(#darkmode-toggle:checked) {
+  background: whitesmoke;
+  color: black;
+}
+body:has(#darkmode-toggle:checked) .box-borders {
+  border: 1px solid black;
+}
+body:has(#darkmode-toggle:checked) .box-borders-left {
+  border-left: 1px solid black;
+}
+body:has(#darkmode-toggle:checked) .box-borders-bottom {
+  border-bottom: 1px solid black;
+}

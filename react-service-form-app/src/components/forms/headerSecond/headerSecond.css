@@ -1,24 +1,19 @@
 .header-second-container {
-  height: 210px;
-}
-.header-second-box-2 {
-  border-left: 1px solid whitesmoke;
-  border-bottom: 1px solid whitesmoke;
-}
-.header-second-box-3 {
-  border-left: 1px solid whitesmoke;
+  height: 220px;
 }
 .row-container {
-  height: 210px;
+  height: 220px;
 }
-.first-row,
-.second-row {
-  height: 105px;
+
+.header-second-first-row,
+.header-second-second-row {
+  height: 110px;
 }
-.first-row {
-  border-left: 1px solid whitesmoke;
-  border-bottom: 1px solid whitesmoke;
-}
-.second-row {
-  border-left: 1px solid whitesmoke;
+
+
+@media screen and (max-width: 620px) {
+
+  .header-second-second-row {
+    height: 55px;
+  }
 }
