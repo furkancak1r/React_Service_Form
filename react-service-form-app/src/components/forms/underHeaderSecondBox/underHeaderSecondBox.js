@@ -4,12 +4,20 @@ import { useFormData } from "../../../contexts/formDataContext/formDataContext";
 
 export default function UnderHeaderSecondBox() {
   const { FormData, FormDataFn } = useFormData();
-
+  const checkTimeArray = ["departureTime"];
   const handleInputChange = (fieldName, event) => {
-    const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
+    let value =
+      event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value;
+
+    if (checkTimeArray.includes(fieldName) && value.length === 2) {
+      value += ":";
+    }
+
     FormDataFn({ ...FormData, [fieldName]: value });
   };
-  
+
   const labelsAndInputs = [
     { id: "withinWarranty", text: "Garanti İçi" },
     { id: "outOfWarranty", text: "Garanti Dışı" },
@@ -19,30 +27,71 @@ export default function UnderHeaderSecondBox() {
 
   const renderLabelAndInput = (item) => (
     <div key={item.id} className="box-borders-bottom">
-    <div className="row">
-      <div className="col-7 col-md-8">
-        <div className="d-flex align-items-center">
-          <label htmlFor={item.id}>{item.text}</label>
+      <div className="row">
+        <div className="col-7 col-md-8">
+          <div className="d-flex align-items-center">
+            <label htmlFor={item.id}>{item.text}</label>
+          </div>
+        </div>
+        <div className="col-4 col-md-4">
+          <div className="first-service-technician-checkbox d-flex justify-content-center align-items-center">
+            <input
+              className="input-checkboxes"
+              autoComplete="off"
+              id={item.id}
+              name={item.id}
+              type="checkbox"
+              onChange={(e) => handleInputChange(item.id, e)}
+            />
+            <label
+              className="label-checkboxes text-center d-flex align-items-center"
+              htmlFor={item.id}
+            ></label>
+          </div>
         </div>
       </div>
-      <div className="col-4 col-md-4">
-      <div className="first-service-technician-checkbox d-flex justify-content-center align-items-center">
-        <input
-          className="input-checkboxes"
-          autoComplete="off"
-          id={item.id}
-          name={item.id}
-          type="checkbox"
-          onChange={(e) => handleInputChange(item.id, e)}
-        />
-        <label
-          className="label-checkboxes text-center d-flex align-items-center"
-          htmlFor={item.id}
-        ></label>
-      </div></div>
-    </div>
     </div>
   );
+  const renderTimeLabelAndInput = (item) => {
+    const { id, name, label } = item;
+
+    return (
+      <div key={id} className="box-borders-bottom">
+        <div className="row">
+          <div className="col-5 col-md-7">
+            <label htmlFor={id}>{label}</label>
+          </div>
+          <div className="col-7 col-md-5 d-flex justify-content-center align-items-center">
+            <div className="general-time-input-container box-borders">
+              <input
+                className="text-center departureTime general-time-input"
+                type="time"
+                id={id}
+                name={name}
+                onChange={(e) => handleInputChange(name, e)}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Kullanım örneği:
+  const timeInputItems = [
+    {
+      id: "departureTime",
+      name: "departureTime",
+      label: "Yola Çıkış Saati",
+    },
+    {
+      id: "serviceStartTime",
+      name: "serviceStartTime",
+      label: "Servis Başlangıç Saati",
+    },
+    // Diğer zaman girişleri...
+  ];
+
   return (
     <form className="under-header-second-box-form">
       <div className="row">
@@ -84,7 +133,11 @@ export default function UnderHeaderSecondBox() {
               </div>
             </div>
           </div>
-          <div className="row"></div>
+          <div className="box-borders-left box-borders-right">
+            <div>
+              {timeInputItems.map((item) => renderTimeLabelAndInput(item))}
+            </div>
+          </div>
           <div className="row"></div>
           <div className="row"></div>
           <div className="row"></div>

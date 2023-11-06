@@ -64,6 +64,13 @@ textarea::-webkit-scrollbar-track {
   background-color: whitesmoke;
 }
 
-:root{
+:root {
   --borderColorForCheckbox: whitesmoke;
+  --time-color-schema: dark;
 }
+input[type="time"] {
+  background-color: transparent;
+  border: none;
+  outline: 0;
+}
+

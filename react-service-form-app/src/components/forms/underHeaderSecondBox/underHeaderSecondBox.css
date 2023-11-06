@@ -40,3 +40,15 @@
   width: 100%;
   height: 100%;
 }
+.general-time-input {
+  color-scheme: var(--time-color-schema);
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+
+}
+.general-time-input-container {
+  width: 70px;
+  height: auto;
+}
+
