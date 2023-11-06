@@ -1,96 +1,28 @@
 import React from "react";
 import "./underHeaderSecondBox.css";
 import { useFormData } from "../../../contexts/formDataContext/formDataContext";
+import {
+  renderLabelAndInput,
+  renderTimeLabelAndInput,
+} from "./underHeaderSecondBoxHelpers";
+import {
+  timeInputItemsFirstColumn,
+  labelsAndInputs,
+  timeInputItemsSecondColumn,
+  labelsAndInputsSecondColumn,
+} from "./UnderHeaderSecondBoxDatas";
 
 export default function UnderHeaderSecondBox() {
   const { FormData, FormDataFn } = useFormData();
-  const checkTimeArray = ["departureTime"];
+
   const handleInputChange = (fieldName, event) => {
     let value =
       event.target.type === "checkbox"
         ? event.target.checked
         : event.target.value;
 
-    if (checkTimeArray.includes(fieldName) && value.length === 2) {
-      value += ":";
-    }
-
     FormDataFn({ ...FormData, [fieldName]: value });
   };
-
-  const labelsAndInputs = [
-    { id: "withinWarranty", text: "Garanti İçi" },
-    { id: "outOfWarranty", text: "Garanti Dışı" },
-    { id: "contractMaintenance", text: "Sözleşmeli Bakım" },
-    { id: "DiscoveryDetection", text: "Keşif / Tespit" },
-  ];
-
-  const renderLabelAndInput = (item) => (
-    <div key={item.id} className="box-borders-bottom">
-      <div className="row">
-        <div className="col-7 col-md-8">
-          <div className="d-flex align-items-center">
-            <label htmlFor={item.id}>{item.text}</label>
-          </div>
-        </div>
-        <div className="col-4 col-md-4">
-          <div className="first-service-technician-checkbox d-flex justify-content-center align-items-center">
-            <input
-              className="input-checkboxes"
-              autoComplete="off"
-              id={item.id}
-              name={item.id}
-              type="checkbox"
-              onChange={(e) => handleInputChange(item.id, e)}
-            />
-            <label
-              className="label-checkboxes text-center d-flex align-items-center"
-              htmlFor={item.id}
-            ></label>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-  const renderTimeLabelAndInput = (item) => {
-    const { id, name, label } = item;
-
-    return (
-      <div key={id} className="box-borders-bottom">
-        <div className="row">
-          <div className="col-5 col-md-7">
-            <label htmlFor={id}>{label}</label>
-          </div>
-          <div className="col-7 col-md-5 d-flex justify-content-center align-items-center">
-            <div className="general-time-input-container box-borders">
-              <input
-                className="text-center departureTime general-time-input"
-                type="time"
-                id={id}
-                name={name}
-                onChange={(e) => handleInputChange(name, e)}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  // Kullanım örneği:
-  const timeInputItems = [
-    {
-      id: "departureTime",
-      name: "departureTime",
-      label: "Yola Çıkış Saati",
-    },
-    {
-      id: "serviceStartTime",
-      name: "serviceStartTime",
-      label: "Servis Başlangıç Saati",
-    },
-    // Diğer zaman girişleri...
-  ];
 
   return (
     <form className="under-header-second-box-form">
@@ -128,20 +60,20 @@ export default function UnderHeaderSecondBox() {
             <div>
               <div className="first-service-technician box-borders-left box-borders-right text-left">
                 <div>
-                  {labelsAndInputs.map((item) => renderLabelAndInput(item))}
+                  {labelsAndInputs.map((item) =>
+                    renderLabelAndInput(item, handleInputChange)
+                  )}
                 </div>
               </div>
             </div>
           </div>
           <div className="box-borders-left box-borders-right">
             <div>
-              {timeInputItems.map((item) => renderTimeLabelAndInput(item))}
+              {timeInputItemsFirstColumn.map((item) =>
+                renderTimeLabelAndInput(item, handleInputChange)
+              )}
             </div>
           </div>
-          <div className="row"></div>
-          <div className="row"></div>
-          <div className="row"></div>
-          <div className="row"></div>
         </div>
         <div className="col-6">
           <div className="row">
@@ -166,12 +98,47 @@ export default function UnderHeaderSecondBox() {
               </div>
             </div>
           </div>
-          <div className="row"></div>
-          <div className="row"></div>
-          <div className="row"></div>
-          <div className="row"></div>
-          <div className="row"></div>
-          <div className="row"></div>
+          <div className="row">
+            <div>
+              <div className="first-service-technician box-borders-left box-borders-right text-left">
+                <div>
+                  {labelsAndInputsSecondColumn.map((item) =>
+                    renderLabelAndInput(item, handleInputChange)
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <div className="row box-borders-bottom"> burada kaldın
+            
+            <div className="col-5 discovery-label-container">
+              <label
+                htmlFor="discoveryNumber"
+                className="discovery-number-label box-borders-left box-borders-right text-left"
+              >
+                Keşif No
+              </label>
+            </div>
+            <div className="col-7 discovery-input-container">
+              <div className="box-borders-right">
+              <input
+                autoComplete="off"
+                id="discoveryNumber"
+                name="discoveryNumber"
+                type="text"
+                onChange={(e) => handleInputChange("discoveryNumber", e)}
+                className="box-borders-left box-borders-right box-borders-bottom"
+              /></div>
+            </div>
+          </div> */}
+
+          <div className="box-borders-left box-borders-right">
+            <div>
+              {timeInputItemsSecondColumn.map((item) =>
+                renderTimeLabelAndInput(item, handleInputChange)
+              )}
+            </div>
+          </div>
         </div>
       </div>
       <div className="row"></div>
