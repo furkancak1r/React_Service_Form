@@ -33,7 +33,7 @@ export default function HeaderSecond() {
   return (
     <div className="header-second-container container box-borders">
       <div className="row-container row">
-        <div className="col-md-6 d-flex box-borders-bottom justify-content-center align-items-center">
+        <div className="col-md-6 d-flex justify-content-center align-items-center">
           <h2 className=" text-center">SERVİS RAPORU</h2>
         </div>
         <div className="col-md-6">

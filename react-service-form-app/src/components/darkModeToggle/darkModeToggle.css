@@ -97,6 +97,12 @@ body:has(#darkmode-toggle:checked) .box-borders-left {
 body:has(#darkmode-toggle:checked) .box-borders-bottom {
   border-bottom: 1px solid black;
 }
+body:has(#darkmode-toggle:checked) .box-borders-top {
+  border-top: 1px solid black;
+}
+body:has(#darkmode-toggle:checked) .box-borders-right {
+  border-right: 1px solid black;
+}
 body:has(#darkmode-toggle:checked) .header-first-logo {
   filter: invert(1);
 }
