@@ -18,7 +18,7 @@ export default function UnderHeaderFirstBox() {
       {UnderHeaderFirstBoxTurkishData.map((field, index) => (
         <div className="row" key={index}>
           <div
-            className={`under-header-first-box-form-label col-4 d-flex align-items-center p-1 ${
+            className={`under-header-first-box-form-label col-4 d-flex align-items-center ${
               index === UnderHeaderFirstBoxTurkishData.length - 1
                 ? `box-borders`
                 : `box-borders-left box-borders-right box-borders-top`
@@ -29,7 +29,7 @@ export default function UnderHeaderFirstBox() {
             </label>
           </div>
           <div
-            className={`under-header-first-box-form-label-inputs col-8 p-1 ${
+            className={`under-header-first-box-form-label-inputs col-8 ${
               index === UnderHeaderFirstBoxTurkishData.length - 1
                 ? `box-borders-right box-borders-top box-borders-bottom`
                 : `box-borders-right box-borders-top`

@@ -5,9 +5,10 @@
   cursor: pointer;
   display: block;
   height: 2em;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+  position: sticky;
+  margin-left: auto;
+  margin-top: 15px;
+  margin-right: 12px;
   width: 3.75em;
 }
 
@@ -56,7 +57,7 @@
   outline: 0.25em dotted #ffc409;
   outline-offset: 0.125em;
   right: 0.7em;
-  top: 0.7em;
+  top: 0.6em;
   width: 0.625em;
 }
 
@@ -103,6 +104,8 @@ body:has(#darkmode-toggle:checked) .box-borders-top {
 body:has(#darkmode-toggle:checked) .box-borders-right {
   border-right: 1px solid black;
 }
+
+
 body:has(#darkmode-toggle:checked) .header-first-logo {
   filter: invert(1);
 }
