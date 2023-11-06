@@ -6,10 +6,43 @@ export default function UnderHeaderSecondBox() {
   const { FormData, FormDataFn } = useFormData();
 
   const handleInputChange = (fieldName, event) => {
-    const value = event.target.value;
+    const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
     FormDataFn({ ...FormData, [fieldName]: value });
   };
+  
+  const labelsAndInputs = [
+    { id: "withinWarranty", text: "Garanti İçi" },
+    { id: "outOfWarranty", text: "Garanti Dışı" },
+    { id: "contractMaintenance", text: "Sözleşmeli Bakım" },
+    { id: "DiscoveryDetection", text: "Keşif / Tespit" },
+  ];
 
+  const renderLabelAndInput = (item) => (
+    <div key={item.id} className="box-borders-bottom">
+    <div className="row">
+      <div className="col-7 col-md-8">
+        <div className="d-flex align-items-center">
+          <label htmlFor={item.id}>{item.text}</label>
+        </div>
+      </div>
+      <div className="col-4 col-md-4">
+      <div className="first-service-technician-checkbox d-flex justify-content-center align-items-center">
+        <input
+          className="input-checkboxes"
+          autoComplete="off"
+          id={item.id}
+          name={item.id}
+          type="checkbox"
+          onChange={(e) => handleInputChange(item.id, e)}
+        />
+        <label
+          className="label-checkboxes text-center d-flex align-items-center"
+          htmlFor={item.id}
+        ></label>
+      </div></div>
+    </div>
+    </div>
+  );
   return (
     <form className="under-header-second-box-form">
       <div className="row">
@@ -44,22 +77,9 @@ export default function UnderHeaderSecondBox() {
           </div>
           <div className="row">
             <div>
-              <div className="first-service-technician box-borders-left box-borders-right box-borders-bottom text-left">
-                <div className="row">
-                  <div className="col-8">
-                    <div>
-                      <label htmlFor="withinWarranty">Garanti içi</label>
-                    </div>
-                  </div>
-                  <div className="col-4 d-flex justify-content-center align-items-center">
-                    <input
-                      autoComplete="off"
-                      id={"withinWarranty"}
-                      name={"withinWarranty"}
-                      type="checkbox"
-                      onChange={(e) => handleInputChange("withinWarranty", e)}
-                    />
-                  </div>
+              <div className="first-service-technician box-borders-left box-borders-right text-left">
+                <div>
+                  {labelsAndInputs.map((item) => renderLabelAndInput(item))}
                 </div>
               </div>
             </div>

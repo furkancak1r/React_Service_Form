@@ -9,3 +9,34 @@
   padding-left: 0;
   width: 100%;
 }
+.first-service-technician-checkbox {
+  height: 100%;
+}
+.first-service-technician-label {
+  height: 100%;
+}
+
+/* Hide the actual checkbox */
+.input-checkboxes {
+  visibility: hidden;
+}
+
+/* Create a custom box using the :before pseudo-element */
+.input-checkboxes + .label-checkboxes:before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--borderColorForCheckbox);
+  border-radius: 3px;
+}
+
+/* Change the background color of the custom box when the checkbox is checked */
+.input-checkboxes:checked + .label-checkboxes:before {
+  content: "\2713";
+  background: whitesmoke;
+  color: black;
+}
+.label-checkboxes {
+  width: 100%;
+  height: 100%;
+}
