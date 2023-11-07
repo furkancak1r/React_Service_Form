@@ -1,38 +1,50 @@
 export const timeInputItemsFirstColumn = [
   {
     id: "departureTime",
-    name: "departureTime",
-    label: "Yola Çıkış Saati",
+    text: "Yola Çıkış Saati",
   },
   {
-    id: "serviceStartTime",
-    name: "serviceStartTime",
-    label: "Servis Başlangıç Saati",
+    id: "arrivalTime",
+    text: "Yola Varış Saati",
   },
-];
-
-export const labelsAndInputs = [
-  { id: "withinWarranty", text: "Garanti İçi" },
-  { id: "outOfWarranty", text: "Garanti Dışı" },
-  { id: "contractMaintenance", text: "Sözleşmeli Bakım" },
-  { id: "DiscoveryDetection", text: "Keşif / Tespit" },
 ];
 
 export const timeInputItemsSecondColumn = [
-    {
-      id: "arrivalTime",
-      name: "arrivalTime",
-      label: "Yola Varış Saati",
-    },
-    {
-      id: "serviceEndTime",
-      name: "serviceEndTime",
-      label: "Servis Bitiş Saati",
-    },
-  ];
+  {
+    id: "serviceStartTime",
+    text: "Servis Baş. Saati",
+  },
+  {
+    id: "serviceEndTime",
+    text: "Servis Bitiş Saati",
+  },
+];
 
-export const labelsAndInputsSecondColumn = [
+export const technicianNames = [
+  {
+    id: "firstTechnician",
+    text: "1.Servis Teknisyeni",
+  },
+  {
+    id: "secondTechnician",
+    text: "2.Servis Teknisyeni",
+  },
+];
+
+export const checkboxDatasRow1 = [
+  { id: "withinWarranty", text: "Garanti İçi" },
   { id: "freeService", text: "Ücretsiz Servis" },
+];
+
+export const checkboxDatasRow2 = [
+  { id: "outOfWarranty", text: "Garanti Dışı" },
   { id: "paidService", text: "Ücretli Servis" },
+];
+export const checkboxDatasRow3 = [
+  { id: "contractMaintenance", text: "Sözleşmeli Bakım" },
   { id: "withMaterial", text: "Malzemeli" },
+];
+
+export const checkboxDatasRowLastItem = [
+  { id: "discoveryDetection", text: "Keşif / Tespit" },
 ];

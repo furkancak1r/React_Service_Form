@@ -1,32 +1,39 @@
 .under-header-second-box-form {
   margin-top: 1rem;
 }
-.first-service-technician {
-  padding-right: 0;
+.technician-names {
   width: 100%;
-}
-.discovery-number-label {
-  width: 100%;
-  height: auto;
-}
-.discovery-number-label{
-    width: 100%;
-  height: auto;
-}
-.discovery-label-container{
-    padding-right: 0;
-}
-.discovery-input-container{
-    padding-left: 0;
-}
-.second-service-technician {
-  padding-left: 0;
-  width: 100%;
-}
-.first-service-technician-checkbox {
   height: 100%;
 }
-.first-service-technician-label {
+#firstTechnician-label-container,
+#firstTechnician-input-container,
+.total-distance-container-below,
+.checkbox-left,
+.time-container-all,
+.time-label-container-above {
+  padding-right: 0;
+}
+#secondTechnician-label-container,
+#secondTechnician-input-container,
+.checkbox-right,
+.total-distance-input-container-all,
+.time-input-container-above {
+  padding-left: 0;
+}
+.total-distance-label,
+.time-label-container {
+  padding-left: 16px;
+}
+.checkbox-container,
+.discovery-number-container,
+.total-distance-input-container,
+.total-distance-label-container,
+.total-distance-input-container,
+.total-distance-input-container-above,
+.time-input-container,
+.time-label-container,
+.time-input-container-middle {
+  width: 100%;
   height: 100%;
 }
 
@@ -50,17 +57,14 @@
   background: whitesmoke;
   color: black;
 }
-.label-checkboxes {
-  width: 100%;
-  height: 100%;
-}
-.general-time-input {
+
+.time-input {
   color-scheme: var(--time-color-schema);
   width: 100%;
   height: 100%;
   font-size: 12px;
 }
-.general-time-input-container {
+.time-input-container {
   width: 70px;
   height: auto;
 }
