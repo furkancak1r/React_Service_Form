@@ -20,9 +20,8 @@
 .time-input-container-above {
   padding-left: 0;
 }
-.total-distance-label,
 .time-label-container {
-  padding-left: 16px;
+  padding-left: 12px;
 }
 .checkbox-container,
 .discovery-number-container,
@@ -36,7 +35,9 @@
   width: 100%;
   height: 100%;
 }
-
+.total-distance-label{
+  padding-left: 16px;
+}
 /* Hide the actual checkbox */
 .input-checkboxes {
   visibility: hidden;
