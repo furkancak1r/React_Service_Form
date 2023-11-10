@@ -28,7 +28,7 @@ export default function ServiceCause() {
   };
 
   return (
-    <form className="service-cause-form">
+    <div className="service-cause-container">
       <div className="row">
         <div className="service-cause-header-container">
           <h5 className="text-center box-borders">Servis Nedeni</h5>
@@ -78,6 +78,6 @@ export default function ServiceCause() {
           </div>
         </div>
       </div>
-    </form>
+    </div>
   );
 }

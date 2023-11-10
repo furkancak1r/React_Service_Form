@@ -14,7 +14,7 @@ export default function UnderHeaderFirstBox() {
     FormDataFn({ ...FormData, [fieldName]: value });
   };
   return (
-    <form className="under-header-first-box-form container">
+    <div className="under-header-first-box-container container">
       {UnderHeaderFirstBoxTurkishData.map((field, index) => (
         <div className="row" key={index}>
           <div
@@ -57,6 +57,6 @@ export default function UnderHeaderFirstBox() {
           </div>
         </div>
       ))}
-    </form>
+    </div>
   );
 }

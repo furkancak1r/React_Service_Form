@@ -1,6 +1,4 @@
-.under-header-first-box-form {
-  margin-top: 1rem;
-}
+
 
 .under-header-first-box-form-label,
 .under-header-first-box-form-label-inputs {
@@ -8,11 +6,6 @@
   padding: 0;
 }
 
-.under-header-first-box-form input[type="submit"] {
+.under-header-first-box-container input[type="submit"] {
   max-width: 6rem;
-}
-
-textarea {
-  padding-left: 4px;
-  padding-right: 4px;
 }

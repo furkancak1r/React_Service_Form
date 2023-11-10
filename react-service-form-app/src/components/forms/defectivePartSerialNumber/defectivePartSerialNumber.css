@@ -1,0 +1,13 @@
+.defective-part-serial-number-input-container{
+    height: 100%;
+}
+.defective-part-serial-number-input-container-all{
+    padding-left: 0px;
+
+}
+.defective-part-serial-number-container-below{
+    padding-right: 0px;
+}
+.render-defective-part-serial-number-label-and-input{
+    margin-top: 12px;
+}
