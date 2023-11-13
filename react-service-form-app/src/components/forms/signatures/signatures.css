@@ -3,7 +3,9 @@
 }
 .name-input-container-1,
 .name-input-container-2,
-.name-h6-container {
+.name-h6-container,
+.signatureFn-container-below,
+.signature-label-container {
   height: 100%;
 }
 .name-h6-container-1,
@@ -13,12 +15,116 @@
 .name-input-container-1-above,
 .name-surname-input-container,
 .name-h6-container-2,
-.name-input-container-2-above {
+.name-input-container-2-above,
+.signatureFn-container-below,
+.signatureFn-container,
+.signatureFn-canvas-container,
+.signatureFn-container-below-2 {
   padding-right: 0px;
 }
 .name-input-container-1-above,
 .name-h6-container-2,
 .name-input-container-2-above,
-.name-title-2 {
+.name-title-2,
+.signatureFn-canvas-container,
+.signatureFn-container-below-2 {
   padding-left: 0px;
+}
+
+.sigCanvas {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (min-width: 260px) and (max-width: 354px) {
+  #UndoIcon1,
+  #UndoIcon2 {
+    color: black !important;
+    cursor: pointer;
+    position: relative;
+    top: -18px;
+    right: 25px;
+    z-index: 5;
+  }
+}
+@media screen and (min-width: 355px) and (max-width: 369px) {
+  #UndoIcon1,
+  #UndoIcon2 {
+    color: black !important;
+    cursor: pointer;
+    position: relative;
+    top: -10px;
+    right: 25px;
+    z-index: 5;
+  }
+}
+@media screen and (min-width: 370px) and (max-width: 384px) {
+  #UndoIcon1,
+  #UndoIcon2 {
+    color: black !important;
+    cursor: pointer;
+    position: relative;
+    top: -30px;
+    right: 25px;
+    z-index: 5;
+  }
+}
+
+@media screen and (min-width: 385px) and (max-width: 392px) {
+  #UndoIcon1,
+  #UndoIcon2 {
+    color: black !important;
+    cursor: pointer;
+    position: relative;
+    top: -18px;
+    right: 25px;
+    z-index: 5;
+  }
+}
+
+@media screen and (min-width: 393px) and (max-width: 538px) {
+  #UndoIcon1,
+  #UndoIcon2 {
+    color: black !important;
+    cursor: pointer;
+    position: relative;
+    top: -16px;
+    right: 25px;
+    z-index: 5;
+  }
+}
+
+@media screen and (min-width: 539px) and (max-width: 1024px) {
+  #UndoIcon1,
+  #UndoIcon2 {
+    color: black !important;
+    cursor: pointer;
+    position: relative;
+    top: -25px;
+    right: 25px;
+    z-index: 5;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1540px) {
+  #UndoIcon1,
+  #UndoIcon2 {
+    color: black !important;
+    cursor: pointer;
+    position: relative;
+    top: -50px;
+    right: 30px;
+    z-index: 5;
+  }
+}
+@media screen and (min-width: 1541px) {
+  #UndoIcon1,
+  #UndoIcon2 {
+    color: black !important;
+    cursor: pointer;
+    position: relative;
+    top: -60px;
+    right: 30px;
+    z-index: 5;
+  }
 }

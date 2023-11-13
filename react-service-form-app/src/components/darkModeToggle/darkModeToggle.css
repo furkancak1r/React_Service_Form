@@ -72,7 +72,6 @@ input:checked ~ .toggle span {
 }
 body {
   transition: background-color 1s;
-  color: whitesmoke;
 }
 body,
 html {
