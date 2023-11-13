@@ -19,6 +19,9 @@
   padding-left: 0px;
 }
 
+.list-container {
+  margin-top: 1rem;
+}
 .list-header-1-under,
 .list-header-2-under,
 .list-header-3-under,
@@ -35,4 +38,14 @@
 .add-row-container {
   width: 100%;
   height: 100%;
+}
+@media screen and (max-width: 400px) {
+  h5 {
+    font-size: 14px;
+    overflow: auto;
+  }
+  h6 {
+    font-size: 15px;
+    overflow: auto;
+  }
 }

@@ -1,0 +1,24 @@
+.signature-container {
+  margin-top: 1rem;
+}
+.name-input-container-1,
+.name-input-container-2,
+.name-h6-container {
+  height: 100%;
+}
+.name-h6-container-1,
+.name-title-1,
+.name-title-2,
+.name-surname-title-container,
+.name-input-container-1-above,
+.name-surname-input-container,
+.name-h6-container-2,
+.name-input-container-2-above {
+  padding-right: 0px;
+}
+.name-input-container-1-above,
+.name-h6-container-2,
+.name-input-container-2-above,
+.name-title-2 {
+  padding-left: 0px;
+}

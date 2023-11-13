@@ -8,6 +8,7 @@ import MalfunctionDefinition from "../malfunctionDefinition/malfunctionDefinitio
 import DefectivePartSerialNumber from "../defectivePartSerialNumber/defectivePartSerialNumber";
 import AdditionalThingsToDo from "../additionalThingsToDo/additionalThingsToDo";
 import List from "../list/list";
+import Signatures from "../signatures/signatures";
 function MainForm() {
   return (
     <div className="main-form-container container">
@@ -50,6 +51,11 @@ function MainForm() {
       <div className="row">
         <div className="col-12 col-md-12">
           <List/>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-12 col-md-12">
+          <Signatures/>
         </div>
       </div>
     </div>

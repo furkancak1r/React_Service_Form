@@ -20,9 +20,7 @@ export default function List() {
       <div className="row">
         <div className="col-12 d-flex justify-content-center align-items-center">
           <div className="add-row-container d-flex justify-content-center align-items-center box-borders-bottom box-borders-left box-borders-right">
-            <h6 className="text-left">
-              Satır Ekle
-            </h6>
+            <h5 className="text-left m-1">Satır Ekle</h5>
             <AddCircleOutlineIcon
               onClick={handleAddRow}
               style={{ cursor: "pointer" }}

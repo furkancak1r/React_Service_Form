@@ -73,9 +73,9 @@ input[type="time"] {
   outline: 0;
 }
 @media screen and (max-width: 500px) {
-label {
-  font-size: small;
-}
+  label {
+    font-size: small;
+  }
 }
 
 textarea {
