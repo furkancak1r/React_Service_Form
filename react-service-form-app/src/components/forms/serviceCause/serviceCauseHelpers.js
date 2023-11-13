@@ -45,8 +45,7 @@ export const renderAnotherLabelAndInput = (handleInputChange) => {
           </div>
         </div>
         <div className="col-11 col-md-9 another-input-container-all">
-          <div className="d-flex justify-content-center another-input-container-above align-items-center box-borders m-2">
-            <div className="another-input-container">
+          <div className="d-flex justify-content-center another-input-container-above align-items-center box-borders">
               <input
                 autoComplete="off"
                 id="another"
@@ -54,7 +53,6 @@ export const renderAnotherLabelAndInput = (handleInputChange) => {
                 type="text"
                 onChange={(e) => handleInputChange("another", e)}
               />
-            </div>
           </div>
         </div>
       </div>

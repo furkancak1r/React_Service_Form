@@ -7,10 +7,12 @@ import NotFound from "./components/notFound/notFound";
 import { ToastContainer } from "react-toastify";
 import HandleServerError from "./components/handleServerError/handleServerError";
 import { FormDataProvider } from "./contexts/formDataContext/formDataContext";
+import { ListItemDataProvider } from "./contexts/listItemsContext/listItemsContext";
 export default function App() {
   return (
     <div className="App">
       <FormDataProvider>
+      <ListItemDataProvider>
         <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -18,6 +20,7 @@ export default function App() {
           <Route path="/internal-error" element={<HandleServerError />} />
           <Route path="*" element={<Navigate to="/not-found" />} />
         </Routes>
+        </ListItemDataProvider>
       </FormDataProvider>
     </div>
   );

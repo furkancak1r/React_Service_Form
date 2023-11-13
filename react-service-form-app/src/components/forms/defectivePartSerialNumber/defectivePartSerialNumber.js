@@ -13,12 +13,12 @@ export default function DefectivePartSerialNumber() {
     <div className="row render-defective-part-serial-number-label-and-input">
       <div className="col-3 defective-part-serial-number-container-below">
         <div className="defective-part-serial-number-container box-borders-left box-borders-bottom box-borders-top">
-          <label
+          <h6
             htmlFor="defectivePartSerialNumber"
-            className="defective-part-serial-number text-center"
+            className="defective-part-serial-number text-left"
           >
-            Arızalı Parça Seri Numarası{" "}
-          </label>
+            Arızalı Parça Seri Numarası
+          </h6>
         </div>
       </div>
       <div className="col-9 defective-part-serial-number-input-container-all">

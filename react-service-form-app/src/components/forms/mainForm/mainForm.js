@@ -7,6 +7,7 @@ import ServiceCause from "../serviceCause/serviceCause";
 import MalfunctionDefinition from "../malfunctionDefinition/malfunctionDefinition";
 import DefectivePartSerialNumber from "../defectivePartSerialNumber/defectivePartSerialNumber";
 import AdditionalThingsToDo from "../additionalThingsToDo/additionalThingsToDo";
+import List from "../list/list";
 function MainForm() {
   return (
     <div className="main-form-container container">
@@ -44,6 +45,11 @@ function MainForm() {
       <div className="row">
         <div className="col-12 col-md-12">
           <AdditionalThingsToDo/>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-12 col-md-12">
+          <List/>
         </div>
       </div>
     </div>

@@ -2,6 +2,16 @@
 .service-cause-checkboxes-second-row {
   padding-top: 5px;
 }
+.another-container-below {
+  padding-top: 4px;
+}
+.service-cause-container {
+  margin-top: 12px;
+}
+.another-input-container-above {
+  margin: 0.5rem;
+  width: 90%;
+}
 
 @media screen and (max-width: 400px) {
   .render-another-label-and-input {
@@ -10,10 +20,7 @@
   .another-input-container-all {
     padding: 2px;
   }
-}
-.another-container-below {
-  padding-top: 4px;
-}
-.service-cause-container{
-  margin-top: 12px;
+  .another-input-container-above {
+    width: 75%;
+  }
 }
