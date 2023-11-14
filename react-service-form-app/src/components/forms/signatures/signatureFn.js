@@ -47,6 +47,7 @@ export default function SignatureFn() {
             penColor="black"
             backgroundColor="whitesmoke"
             ref={sigPadRef1}
+            
             canvasProps={{ className: "sigCanvas" }}
             onEnd={() =>
               onSignatureChange(

@@ -69,9 +69,10 @@ export default function ShowVisuals() {
           </Card>
         </div>
       ))}
-      <Dialog open={Boolean(selectedVisual)} onClose={handleCloseModal}>
+      <Dialog disableScrollLock open={Boolean(selectedVisual)} onClose={handleCloseModal}>
         {selectedVisual && (
           <img
+          className="img-fluid"
             src={selectedVisual.preview}
             alt={selectedVisual.name}
             style={{ maxWidth: "100%", maxHeight: "100%" }}

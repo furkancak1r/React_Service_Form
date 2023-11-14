@@ -15,7 +15,7 @@ import "./mainForm.css";
 
 function MainForm() {
   return (
-    <div className="main-form-container container">
+    <div className="main-form-container container ">
       <div className="row">
         <div className="col-12 col-md-6">
           <HeaderFirst />
@@ -24,7 +24,7 @@ function MainForm() {
           <HeaderSecond />
         </div>
       </div>
-      <div className="row mt-3">
+      <div className="row mt-3 d-flex ">
         <div className="col-12 col-md-6">
           <UnderHeaderFirstBox />
         </div>

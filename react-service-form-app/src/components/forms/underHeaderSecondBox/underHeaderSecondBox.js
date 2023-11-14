@@ -34,7 +34,7 @@ export default function UnderHeaderSecondBox() {
   
 
   return (
-    <form className="under-header-second-box-form mt-3">
+    <form className="under-header-second-box-form mt-3 mt-md-0">
       <div className="row">
         <div className="col-12">
           <div>

@@ -3,7 +3,7 @@ import "./headerFirst.css";
 
 export default function HeaderFirst() {
   return (
-    <div className="header-first-container container box-borders">
+    <div className="header-first-container container box-borders mt-3">
       <div className="header-first-row-1 d-flex justify-content-center row">
         <img
           className="header-first-logo"
