@@ -79,14 +79,18 @@ export const renderTechnicianNameLabels = (item) => {
       >
         <label htmlFor={id} className="text-center">
           {text} <br />
-          (Ad & Soyad)
+          {id !== "servicePoint" ? "Ad & Soyad" : ""}
         </label>
       </div>
     </div>
   );
 };
 
-export const renderTechnicianNameInputs = (item, handleInputChange) => {
+export const renderTechnicianNameInputs = (
+  item,
+  handleInputChange,
+  formData
+) => {
   const { id } = item;
 
   return (
@@ -103,15 +107,25 @@ export const renderTechnicianNameInputs = (item, handleInputChange) => {
           id={id}
           type="text"
           onChange={(e) => handleInputChange(id, e)}
+          value={formData[id] || ""}
+          readOnly={id === "servicePoint" ? true : false}
         />
       </div>
     </div>
   );
 };
 
-export const renderLabelAndCheckboxes = (item, index, handleInputChange) => {
+export const renderLabelAndCheckboxes = (
+  item,
+  index,
+  handleInputChange,
+  formData
+) => {
   const { id, text } = item;
   const checkboxClass = index === 0 ? "checkbox-left" : "checkbox-right";
+
+  const isDisabledInput = id === "withinWarranty" || id === "outOfWarranty";
+  const isDisabledLabel = id === "withinWarranty" || id === "outOfWarranty";
 
   return (
     <div
@@ -136,12 +150,16 @@ export const renderLabelAndCheckboxes = (item, index, handleInputChange) => {
             className="input-checkboxes"
             autoComplete="off"
             id={id}
+            name={id}
             type="checkbox"
             onChange={(e) => handleInputChange(id, e)}
+            disabled={isDisabledInput}
+            checked={formData[id]}
           />
           <label
             className="label-checkboxes text-center d-flex align-items-center"
             htmlFor={id}
+            disabled={isDisabledLabel}
           ></label>
         </div>
       </div>
@@ -173,6 +191,9 @@ export const renderTotalDistanceLabelAndInput = (handleInputChange) => {
               name="totalDistance"
               type="text"
               onChange={(e) => handleInputChange("totalDistance", e)}
+              onInput={(e) =>
+                (e.target.value = e.target.value.replace(/\D/g, ""))
+              }
             />
           </div>
         </div>

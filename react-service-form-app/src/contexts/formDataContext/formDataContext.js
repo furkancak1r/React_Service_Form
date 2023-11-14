@@ -7,14 +7,22 @@ export const useFormData = () => {
 };
 
 export const FormDataProvider = ({ children }) => {
-  const [FormData, setFormData] = useState([]);
+  const [formData, setFormData] = useState({
+    outOfWarranty: false,
+    withinWarranty: false,
+    freeService: false,
+    paidService: false,
+    contractMaintenance: false,
+    withMaterial: false,
+    discoveryDetection: false,
+  });
 
   const FormDataFn = (data) => {
     setFormData(data);
   };
 
   return (
-    <FormDataContext.Provider value={{ FormData, FormDataFn }}>
+    <FormDataContext.Provider value={{ formData, FormDataFn }}>
       {children}
     </FormDataContext.Provider>
   );

@@ -7,12 +7,15 @@ import {
 import { useFormData } from "../../../contexts/formDataContext/formDataContext";
 
 export default function UnderHeaderFirstBox() {
-  const { FormData, FormDataFn } = useFormData();
+  const { formData, FormDataFn } = useFormData();
 
   const handleInputChange = (fieldName, event) => {
+
+
     const value = event.target.value;
-    FormDataFn({ ...FormData, [fieldName]: value });
+    FormDataFn({ ...formData, [fieldName]: value });
   };
+
   return (
     <div className="under-header-first-box-container container">
       {UnderHeaderFirstBoxTurkishData.map((field, index) => (
@@ -39,9 +42,8 @@ export default function UnderHeaderFirstBox() {
               <textarea
                 autoComplete="off"
                 id={UnderHeaderFirstBoxEnglishData[index]}
-                onChange={(e) =>
-                  handleInputChange(UnderHeaderFirstBoxEnglishData[index], e)
-                }
+                readOnly 
+                value={formData[UnderHeaderFirstBoxEnglishData[index]] || ''}
               />
             ) : (
               <input
@@ -52,6 +54,8 @@ export default function UnderHeaderFirstBox() {
                 onChange={(e) =>
                   handleInputChange(UnderHeaderFirstBoxEnglishData[index], e)
                 }
+                value={formData[UnderHeaderFirstBoxEnglishData[index]] || ''}
+                readOnly={["customerTitle", "relatedPerson", "address", "branch"].includes(UnderHeaderFirstBoxEnglishData[index])}  // Make the input read-only for specified fields
               />
             )}
           </div>

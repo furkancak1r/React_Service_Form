@@ -20,7 +20,7 @@ import {
 } from "./UnderHeaderSecondBoxDatas";
 
 export default function UnderHeaderSecondBox() {
-  const { FormData, FormDataFn } = useFormData();
+  const { formData, FormDataFn } = useFormData();
 
   const handleInputChange = (fieldName, event) => {
     let value =
@@ -28,8 +28,10 @@ export default function UnderHeaderSecondBox() {
         ? event.target.checked
         : event.target.value;
 
-    FormDataFn({ ...FormData, [fieldName]: value });
+    FormDataFn({ ...formData, [fieldName]: value });
   };
+
+  
 
   return (
     <form className="under-header-second-box-form">
@@ -43,28 +45,28 @@ export default function UnderHeaderSecondBox() {
           </div>
           <div className="row">
             {technicianNames.map((item) =>
-              renderTechnicianNameInputs(item, handleInputChange)
+              renderTechnicianNameInputs(item, handleInputChange,formData)
             )}
           </div>
           <div className="row">
             {checkboxDatasRow1.map((item, index) =>
-              renderLabelAndCheckboxes(item, index, handleInputChange)
+              renderLabelAndCheckboxes(item, index, handleInputChange,formData)
             )}
           </div>
           <div className="row">
             {checkboxDatasRow2.map((item, index) =>
-              renderLabelAndCheckboxes(item, index, handleInputChange)
+              renderLabelAndCheckboxes(item, index, handleInputChange,formData)
             )}
           </div>
           <div className="row">
             {checkboxDatasRow3.map((item, index) =>
-              renderLabelAndCheckboxes(item, index, handleInputChange)
+              renderLabelAndCheckboxes(item, index, handleInputChange,formData)
             )}
           </div>
 
           <div className="row">
             {checkboxDatasRowLastItem.map((item, index) =>
-              renderLabelAndCheckboxes(item, index, handleInputChange)
+              renderLabelAndCheckboxes(item, index, handleInputChange,formData)
             )}
             {renderDiscoveryLabelAndInput(handleInputChange)}
           </div>

@@ -7,7 +7,7 @@ export default function SignatureFn() {
   const sigPadRef1 = useRef(null);
   const sigPadRef2 = useRef(null);
 
-  const { FormData, FormDataFn } = useFormData();
+  const { formData, FormDataFn } = useFormData();
 
   const onSignatureChange = (sigPadRef, formDataKey) => {
     if (sigPadRef && sigPadRef.current) {
@@ -15,17 +15,17 @@ export default function SignatureFn() {
         .getTrimmedCanvas()
         .toDataURL("image/png");
       FormDataFn({
-        ...FormData,
+        ...formData,
         [formDataKey]: signatureData,
       });
     }
   };
 
   const clearCanvas = (sigPadRef, formDataKey) => {
-    if (FormData[formDataKey] && FormData[formDataKey].length > 2) {
+    if (formData[formDataKey] && formData[formDataKey].length > 2) {
       sigPadRef.current.clear();
       FormDataFn({
-        ...FormData,
+        ...formData,
         [formDataKey]: "",
       });
     }
@@ -56,8 +56,8 @@ export default function SignatureFn() {
             }
             style={{ position: "relative" }}
           />
-          {FormData["signatureForProsoEngineerTechnician"] &&
-            FormData["signatureForProsoEngineerTechnician"].length > 2 && (
+          {formData["signatureForProsoEngineerTechnician"] &&
+            formData["signatureForProsoEngineerTechnician"].length > 2 && (
               <UndoIcon
                 id="UndoIcon1"
                 onClick={() =>
@@ -86,8 +86,8 @@ export default function SignatureFn() {
             onEnd={() => onSignatureChange(sigPadRef2, "signatureForCustomer")}
             style={{ position: "relative" }}
           />
-          {FormData["signatureForCustomer"] &&
-            FormData["signatureForCustomer"].length > 2 && (
+          {formData["signatureForCustomer"] &&
+            formData["signatureForCustomer"].length > 2 && (
               <UndoIcon
                 id="UndoIcon2"
                 onClick={() => clearCanvas(sigPadRef2, "signatureForCustomer")}

@@ -1,5 +1,6 @@
 import React from "react";
 import { useListItemData } from "../../../contexts/listItemsContext/listItemsContext";
+
 export default function ListItem({ lineNumber }) {
   const { listItemData, updateListItemData } = useListItemData();
 
@@ -10,6 +11,7 @@ export default function ListItem({ lineNumber }) {
       [fieldName]: value,
     });
   };
+  
   return (
     <div className="row">
       <div className="list-item-first col-2">

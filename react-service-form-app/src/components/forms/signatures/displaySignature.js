@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useFormData } from "../../../contexts/formDataContext/formDataContext";
 
 export default function DisplaySignature() {
-  const { FormData } = useFormData();
+  const { formData } = useFormData();
   const [imageSrc, setImageSrc] = useState("");
 
   useEffect(() => {
-    if (FormData.signature) {
+    if (formData.signature) {
       // Convert base64 to image
       const img = new Image();
-      img.src = FormData.signature;
+      img.src = formData.signature;
       setImageSrc(img.src);
     }
-  }, [FormData.signature]);
+  }, [formData.signature]);
 
   return (
     <div className="display-signature-container">

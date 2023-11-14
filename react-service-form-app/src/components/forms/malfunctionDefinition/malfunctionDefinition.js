@@ -3,11 +3,11 @@ import "./malfunctionDefinition.css";
 import { useFormData } from "../../../contexts/formDataContext/formDataContext";
 
 export default function MalfunctionDefinition() {
-  const { FormData, FormDataFn } = useFormData();
+  const { formData, FormDataFn } = useFormData();
 
   const handleInputChange = (fieldName, event) => {
     const value = event.target.value;
-    FormDataFn({ ...FormData, [fieldName]: value });
+    FormDataFn({ ...formData, [fieldName]: value });
   };
   return (
     <div className="malfunction-definition-container">

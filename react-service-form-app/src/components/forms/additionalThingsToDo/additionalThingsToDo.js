@@ -3,11 +3,11 @@ import "./additionalThingsToDo.css";
 import { useFormData } from "../../../contexts/formDataContext/formDataContext";
 
 export default function AdditionalThingsToDo() {
-  const { FormData, FormDataFn } = useFormData();
+  const { formData, FormDataFn } = useFormData();
 
   const handleInputChange = (fieldName, event) => {
     const value = event.target.value;
-    FormDataFn({ ...FormData, [fieldName]: value });
+    FormDataFn({ ...formData, [fieldName]: value });
   };
   return (
     <div className="additional-things-to-do-container">

@@ -20,7 +20,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/not-found" element={<NotFound />} />
             <Route path="/internal-error" element={<HandleServerError />} />
-            <Route path="*" element={<Navigate to="/not-found" />} />
+            <Route path="*" element={<Navigate to="/not-found"/>} />
           </Routes>
         </ListItemDataProvider>
       </FormDataProvider>

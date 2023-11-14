@@ -23,11 +23,11 @@ export const timeInputItemsSecondColumn = [
 export const technicianNames = [
   {
     id: "firstTechnician",
-    text: "1.Servis Teknisyeni",
+    text: "Servis Teknisyeni",
   },
   {
-    id: "secondTechnician",
-    text: "2.Servis Teknisyeni",
+    id: "servicePoint",
+    text: "Hizmet Noktası",
   },
 ];
 

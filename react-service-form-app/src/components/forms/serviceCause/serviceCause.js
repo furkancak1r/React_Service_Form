@@ -16,7 +16,7 @@ import {
 import { useFormData } from "../../../contexts/formDataContext/formDataContext";
 
 export default function ServiceCause() {
-  const { FormData, FormDataFn } = useFormData();
+  const { formData, FormDataFn } = useFormData();
 
   const handleInputChange = (fieldName, event) => {
     const value =
@@ -24,7 +24,7 @@ export default function ServiceCause() {
         ? event.target.checked
         : event.target.value;
 
-    FormDataFn({ ...FormData, [fieldName]: value });
+    FormDataFn({ ...formData, [fieldName]: value });
   };
 
   return (
