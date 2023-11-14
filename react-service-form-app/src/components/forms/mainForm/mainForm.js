@@ -1,4 +1,3 @@
-import "./mainForm.css";
 import HeaderFirst from "../headerFirst/headerFirst";
 import HeaderSecond from "../headerSecond/headerSecond";
 import UnderHeaderFirstBox from "../underHeaderFirstBox/underHeaderFirstBox";
@@ -7,8 +6,11 @@ import ServiceCause from "../serviceCause/serviceCause";
 import MalfunctionDefinition from "../malfunctionDefinition/malfunctionDefinition";
 import DefectivePartSerialNumber from "../defectivePartSerialNumber/defectivePartSerialNumber";
 import AdditionalThingsToDo from "../additionalThingsToDo/additionalThingsToDo";
-import List from "../list/list";
+import SubmitButton from "../submitButton/submitButton";
 import Signatures from "../signatures/signatures";
+import List from "../list/list";
+import "./mainForm.css";
+
 function MainForm() {
   return (
     <div className="main-form-container container">
@@ -56,6 +58,11 @@ function MainForm() {
       <div className="row">
         <div className="col-12 col-md-12">
           <Signatures/>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-12 col-md-12 d-flex justify-content-center align-items-center m-4">
+          <SubmitButton/>
         </div>
       </div>
     </div>

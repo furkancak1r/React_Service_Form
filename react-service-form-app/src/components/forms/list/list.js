@@ -5,7 +5,7 @@ import ListItem from "./listItem";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 export default function List() {
-  const [rowCount, setRowCount] = useState(3); // Başlangıçta 3 satır var
+  const [rowCount, setRowCount] = useState(3);
 
   const handleAddRow = () => {
     setRowCount((prevCount) => prevCount + 1);

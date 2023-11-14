@@ -1,0 +1,8 @@
+.submit-button {
+  color: var(--borderColorForCheckbox);
+  border-color: var(--borderColorForCheckbox);
+}
+.submit-button:hover {
+  border-color: green;
+  color: green;
+}
