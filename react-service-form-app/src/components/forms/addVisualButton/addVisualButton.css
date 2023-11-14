@@ -1,0 +1,19 @@
+.add-visual-button {
+    color: var(--borderColorForCheckbox) !important;
+    border: 1px solid !important;
+    border-color: var(--borderColorForCheckbox) !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    height: 100% !important;
+    margin: 5px !important;
+
+  }
+  .add-visual-button:hover {
+    border-color: green !important;
+    color: green !important;
+  }
+  @media screen and (max-width: 500px) {
+    .add-visual-button {
+    font-size: 12px !important;
+    }
+  }

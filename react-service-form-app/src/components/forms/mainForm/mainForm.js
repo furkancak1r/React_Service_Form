@@ -8,6 +8,8 @@ import DefectivePartSerialNumber from "../defectivePartSerialNumber/defectivePar
 import AdditionalThingsToDo from "../additionalThingsToDo/additionalThingsToDo";
 import SubmitButton from "../submitButton/submitButton";
 import Signatures from "../signatures/signatures";
+import AddVisualButton from "../addVisualButton/addVisualButton";
+import ShowVisuals from "../showVisuals/showVisuals";
 import List from "../list/list";
 import "./mainForm.css";
 
@@ -47,22 +49,28 @@ function MainForm() {
       </div>
       <div className="row">
         <div className="col-12 col-md-12">
-          <AdditionalThingsToDo/>
+          <AdditionalThingsToDo />
         </div>
       </div>
       <div className="row">
         <div className="col-12 col-md-12">
-          <List/>
+          <List />
         </div>
       </div>
       <div className="row">
         <div className="col-12 col-md-12">
-          <Signatures/>
+          <Signatures />
         </div>
       </div>
       <div className="row">
-        <div className="col-12 col-md-12 d-flex justify-content-center align-items-center m-4">
-          <SubmitButton/>
+        <div className="col-12 col-md-12">
+          <ShowVisuals />
+        </div>
+      </div>
+      <div className="row d-flex justify-content-center align-items-center mt-3">
+        <div className="d-flex justify-content-center align-items-center">
+          <AddVisualButton />
+          <SubmitButton />
         </div>
       </div>
     </div>

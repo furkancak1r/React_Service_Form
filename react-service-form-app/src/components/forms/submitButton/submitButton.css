@@ -1,8 +1,16 @@
 .submit-button {
   color: var(--borderColorForCheckbox) !important;
   border-color: var(--borderColorForCheckbox) !important;
+  height: 100% !important;
+  margin: 5px !important;
+
 }
 .submit-button:hover {
   border-color: green !important;
   color: green !important;
+}
+@media screen and (max-width: 500px) {
+  .submit-button {
+  font-size: 12px !important;
+  }
 }
