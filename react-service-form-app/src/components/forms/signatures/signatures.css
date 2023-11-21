@@ -147,19 +147,32 @@
   color: orange !important;
 }
 
-#UndoIcon,#signature-save{
+#UndoIcon,
+#signature-save {
   color: whitesmoke !important;
   background-color: rgb(29, 1, 11);
   font-size: 0.8rem;
   border: 1px solid whitesmoke;
   border-radius: 6px;
 }
-#signature-save:hover,#UndoIcon:hover{
+#signature-save:hover,
+#UndoIcon:hover {
   color: black !important;
   border-color: black !important;
   background-color: transparent;
 }
-.signature-borders{
-    border: 1px solid black !important;
-
+.signature-borders {
+  border: 1px solid black !important;
+}
+@media screen and (max-width: 1541px) {
+  .signature-button-1,
+  .signature-button-2 {
+    scale: 0.7;
+  }
+}
+@media screen and (min-width: 278px) and (max-width: 350px) {
+  .signature-button-1,
+  .signature-button-2 {
+    scale: 0.5;
+  }
 }

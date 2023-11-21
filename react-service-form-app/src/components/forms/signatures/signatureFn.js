@@ -31,7 +31,7 @@ export default function SignatureFn() {
   return (
     <div className="signatureFn-container row">
       <div className="signatureFn-container-below col-2">
-        <div className="signature-label-container d-flex justify-content-center align-items-center box-borders-bottom box-borders-left">
+        <div  className="signature-label-container d-flex justify-content-center align-items-center box-borders-bottom box-borders-left">
           <Button
             variant="outlined"
             className="signature-button-1 m-2"
