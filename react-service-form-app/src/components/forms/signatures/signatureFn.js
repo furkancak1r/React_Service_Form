@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import SignatureCanvas from "react-signature-canvas";
 import { useFormData } from "../../../contexts/formDataContext/formDataContext";
 import UndoIcon from "@mui/icons-material/Undo";
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
 
 export default function SignatureFn() {
   const sigPadRef1 = useRef(null);
@@ -66,6 +67,8 @@ export default function SignatureFn() {
                 }
               />
             )}
+            <FullscreenIcon
+            id="fullScreenIcon1"/>
         </div>
       </div>
 
@@ -94,6 +97,8 @@ export default function SignatureFn() {
                 onClick={() => clearCanvas(sigPadRef2, "signatureForCustomer")}
               />
             )}
+              <FullscreenIcon
+            id="fullScreenIcon2"/>
         </div>
       </div>
     </div>

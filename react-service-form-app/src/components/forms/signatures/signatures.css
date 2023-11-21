@@ -36,6 +36,7 @@
   height: 100%;
 }
 
+
 @media screen and (min-width: 260px) and (max-width: 354px) {
   #UndoIcon1,
   #UndoIcon2 {
@@ -126,5 +127,14 @@
     top: -60px;
     right: 30px;
     z-index: 5;
+  }
+  #fullScreenIcon1,#fullScreenIcon2{
+    position: relative;
+    bottom: -60px;
+    right: 30px;
+    z-index: 5;
+    color: black !important;
+    cursor: pointer;
+    font-size: 2rem;    
   }
 }
