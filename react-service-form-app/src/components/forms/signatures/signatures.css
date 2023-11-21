@@ -4,7 +4,6 @@
 .name-input-container-1,
 .name-input-container-2,
 .name-h6-container,
-.signatureFn-container-below,
 .signature-label-container {
   height: 100%;
 }
@@ -30,12 +29,6 @@
 .signatureFn-container-below-2 {
   padding-left: 0px;
 }
-
-.sigCanvas {
-  width: 100%;
-  height: 100%;
-}
-
 
 @media screen and (min-width: 260px) and (max-width: 354px) {
   #UndoIcon1,
@@ -128,13 +121,45 @@
     right: 30px;
     z-index: 5;
   }
-  #fullScreenIcon1,#fullScreenIcon2{
+  #fullScreenIcon1,
+  #fullScreenIcon2 {
     position: relative;
     bottom: -60px;
     right: 30px;
     z-index: 5;
     color: black !important;
     cursor: pointer;
-    font-size: 2rem;    
+    font-size: 2rem;
   }
+}
+.sigCanvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+.signature-button-1,
+.signature-button-2 {
+  color: var(--borderColorForCheckbox) !important;
+  border-color: var(--borderColorForCheckbox) !important;
+}
+.signature-button-1:hover,
+.signature-button-2:hover {
+  border-color: orange !important;
+  color: orange !important;
+}
+
+#UndoIcon,#signature-save{
+  color: whitesmoke !important;
+  background-color: rgb(29, 1, 11);
+  font-size: 0.8rem;
+  border: 1px solid whitesmoke;
+  border-radius: 6px;
+}
+#signature-save:hover,#UndoIcon:hover{
+  color: black !important;
+  border-color: black !important;
+  background-color: transparent;
+}
+.signature-borders{
+    border: 1px solid black !important;
+
 }

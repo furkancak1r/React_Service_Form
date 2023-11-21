@@ -1,106 +1,100 @@
-import React, { useRef } from "react";
-import SignatureCanvas from "react-signature-canvas";
+import React, { useRef, useState } from "react";
+import Button from "@mui/material/Button";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import { useFormData } from "../../../contexts/formDataContext/formDataContext";
-import UndoIcon from "@mui/icons-material/Undo";
-import FullscreenIcon from '@mui/icons-material/Fullscreen';
+
+import SignatureDialog from "./signatureDialog";
 
 export default function SignatureFn() {
+  const { formData, FormDataFn } = useFormData();
+
   const sigPadRef1 = useRef(null);
   const sigPadRef2 = useRef(null);
 
-  const { formData, FormDataFn } = useFormData();
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedSigPadRef, setSelectedSigPadRef] = useState(sigPadRef1);
+  const [formDataKey, setFormDataKey] = useState("");
 
-  const onSignatureChange = (sigPadRef, formDataKey) => {
-    if (sigPadRef && sigPadRef.current) {
-      const signatureData = sigPadRef.current
-        .getTrimmedCanvas()
-        .toDataURL("image/png");
-      FormDataFn({
-        ...formData,
-        [formDataKey]: signatureData,
-      });
-    }
+
+
+
+  const handleSubmitClick = (selectedSigPadRef,key) => {
+    setOpenDialog(true);
+    setSelectedSigPadRef(selectedSigPadRef);
+    setFormDataKey(key);
   };
 
-  const clearCanvas = (sigPadRef, formDataKey) => {
-    if (formData[formDataKey] && formData[formDataKey].length > 2) {
-      sigPadRef.current.clear();
-      FormDataFn({
-        ...formData,
-        [formDataKey]: "",
-      });
-    }
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
   };
 
   return (
     <div className="signatureFn-container row">
       <div className="signatureFn-container-below col-2">
-        <div className="signature-label-container d-flex align-items-center box-borders-bottom box-borders-left">
-          <h5 className="text-left">İmza</h5>
+        <div className="signature-label-container d-flex justify-content-center align-items-center box-borders-bottom box-borders-left">
+          <Button
+            variant="outlined"
+            className="signature-button-1 m-2"
+            onClick={() => handleSubmitClick(sigPadRef1,"engineerTechnicianSignature")}
+            endIcon={<DriveFileRenameOutlineIcon />}
+          >
+           {formData.engineerTechnicianSignature ?  `İmza Düzenle`:`İmza Ekle`}
+          </Button>{" "}
         </div>
       </div>
-      <div className="signatureFn-canvas-container col-4">
+      <div className={`signatureFn-canvas-container col-4`}>
         <div
-          style={{ width: "auto", position: "relative" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            position: "relative",
+            display: "flex",
+          }}
           className="d-flex align-items-center box-borders-right box-borders-bottom box-borders-left"
         >
-          <SignatureCanvas
-            penColor="black"
-            backgroundColor="whitesmoke"
-            ref={sigPadRef1}
-            
-            canvasProps={{ className: "sigCanvas" }}
-            onEnd={() =>
-              onSignatureChange(
-                sigPadRef1,
-                "signatureForProsoEngineerTechnician"
-              )
-            }
-            style={{ position: "relative" }}
-          />
-          {formData["signatureForProsoEngineerTechnician"] &&
-            formData["signatureForProsoEngineerTechnician"].length > 2 && (
-              <UndoIcon
-                id="UndoIcon1"
-                onClick={() =>
-                  clearCanvas(sigPadRef1, "signatureForProsoEngineerTechnician")
-                }
-              />
-            )}
-            <FullscreenIcon
-            id="fullScreenIcon1"/>
+          {formData.engineerTechnicianSignature && (
+            <img
+              src={formData.engineerTechnicianSignature}
+              alt="Saved Signature"
+              style={{ width: "100%", height: "100%" }}
+            />
+          )}
         </div>
       </div>
 
       <div className="signatureFn-container-below-2 col-2">
-        <div className="signature-label-container d-flex align-items-center box-borders-bottom ">
-          <h5 className="text-left">İmza</h5>
+        <div className="signature-label-container d-flex justify-content-center align-items-center box-borders-bottom ">
+          <Button
+            variant="outlined"
+            className="signature-button-2 m-2"
+            onClick={() => handleSubmitClick(sigPadRef2,"customerSignature")}
+            endIcon={<DriveFileRenameOutlineIcon />}
+          >
+           {formData.customerSignature ?  `İmza Düzenle`:`İmza Ekle`}
+          </Button>
         </div>
       </div>
       <div className="signatureFn-canvas-container col-4">
         <div
-          style={{ width: "auto", position: "relative" }}
-          className="d-flex align-items-center box-borders-right box-borders-bottom box-borders-left"
+          style={{ width: "auto", height: "100%", position: "relative" }}
+          className={`d-flex align-items-center box-borders-right box-borders-bottom box-borders-left`}
         >
-          <SignatureCanvas
-            penColor="black"
-            backgroundColor="whitesmoke"
-            ref={sigPadRef2}
-            canvasProps={{ className: "sigCanvas" }}
-            onEnd={() => onSignatureChange(sigPadRef2, "signatureForCustomer")}
-            style={{ position: "relative" }}
-          />
-          {formData["signatureForCustomer"] &&
-            formData["signatureForCustomer"].length > 2 && (
-              <UndoIcon
-                id="UndoIcon2"
-                onClick={() => clearCanvas(sigPadRef2, "signatureForCustomer")}
-              />
-            )}
-              <FullscreenIcon
-            id="fullScreenIcon2"/>
+          {formData.customerSignature && (
+            <img
+              src={formData.customerSignature}
+              alt="Saved Signature"
+              style={{ width: "100%", height: "100%" }}
+            />
+          )}
         </div>
       </div>
+      <SignatureDialog
+        openDialog={openDialog}
+        handleCloseDialog={handleCloseDialog}
+        sigPadRef={selectedSigPadRef}
+        FormDataFn={FormDataFn}
+        formDataKey={formDataKey}
+      />
     </div>
   );
 }

@@ -6,7 +6,7 @@ export default function SignatureTitlesInputs({ handleInputChange }) {
       <div className="name-h6-container-1 col-2">
         <div className="box-borders-left box-borders-bottom">
           <h6
-            htmlFor="prosoEngineerTechnicianNameSurname"
+            htmlFor="engineerTechnicianNameSurname"
             className="text-left"
           >
             Ad Soyad
@@ -17,11 +17,11 @@ export default function SignatureTitlesInputs({ handleInputChange }) {
         <div className="name-input-container-1 box-borders-left box-borders-bottom box-borders-right">
           <input
             autoComplete="off"
-            id="prosoEngineerTechnicianNameSurname"
-            name="prosoEngineerTechnicianNameSurname"
+            id="engineerTechnicianNameSurname"
+            name="engineerTechnicianNameSurname"
             type="text"
             onChange={(e) =>
-              handleInputChange("prosoEngineerTechnicianNameSurname", e)
+              handleInputChange("engineerTechnicianNameSurname", e)
             }
           />
         </div>

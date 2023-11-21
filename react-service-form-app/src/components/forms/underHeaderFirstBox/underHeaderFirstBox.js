@@ -10,8 +10,6 @@ export default function UnderHeaderFirstBox() {
   const { formData, FormDataFn } = useFormData();
 
   const handleInputChange = (fieldName, event) => {
-
-
     const value = event.target.value;
     FormDataFn({ ...formData, [fieldName]: value });
   };
@@ -40,10 +38,11 @@ export default function UnderHeaderFirstBox() {
           >
             {UnderHeaderFirstBoxEnglishData[index] === "address" ? (
               <textarea
+                style={{ resize: "none" }}
                 autoComplete="off"
                 id={UnderHeaderFirstBoxEnglishData[index]}
-                readOnly 
-                value={formData[UnderHeaderFirstBoxEnglishData[index]] || ''}
+                readOnly
+                value={formData[UnderHeaderFirstBoxEnglishData[index]] || ""}
               />
             ) : (
               <input
@@ -54,8 +53,13 @@ export default function UnderHeaderFirstBox() {
                 onChange={(e) =>
                   handleInputChange(UnderHeaderFirstBoxEnglishData[index], e)
                 }
-                value={formData[UnderHeaderFirstBoxEnglishData[index]] || ''}
-                readOnly={["customerTitle", "relatedPerson", "address", "branch"].includes(UnderHeaderFirstBoxEnglishData[index])}  // Make the input read-only for specified fields
+                value={formData[UnderHeaderFirstBoxEnglishData[index]] || ""}
+                readOnly={[
+                  "customerTitle",
+                  "relatedPerson",
+                  "address",
+                  "branch",
+                ].includes(UnderHeaderFirstBoxEnglishData[index])} // Make the input read-only for specified fields
               />
             )}
           </div>
