@@ -1,7 +1,4 @@
-.header-second-container {
-  height: 220px;
-}
-.row-container {
+.header-second-container,.row-container {
   height: 220px;
 }
 
@@ -16,4 +13,7 @@
   .header-second-second-row {
     height: 83.675px;
   }
+}
+.report-no-container{
+  height: 100%;
 }
