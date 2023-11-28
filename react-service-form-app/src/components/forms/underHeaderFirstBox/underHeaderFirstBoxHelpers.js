@@ -1,11 +1,12 @@
 import Tesseract from "tesseract.js";
 
-export const handleCameraEnhanceIcon = async () => {
+
+export const handleCameraEnhanceIcon = async (image, updatedVisualData ) => {
+
   try {
-    const { image, updatedVisualData } = await getImage();
     const result = await handleTextRecognition(image);
     const serialNo = extractSerialNumber(result);
-
+  
     return { updatedVisualData, serialNo };
   } catch (error) {
     console.error(error);
@@ -13,51 +14,6 @@ export const handleCameraEnhanceIcon = async () => {
   }
 };
 
-const getImage = () => {
-  return new Promise((resolve, reject) => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = "image/*";
-    input.multiple = false;
-    input.addEventListener("change", (event) => {
-      const files = event.target.files;
-      const image = files[0];
-
-      if (!image) {
-        reject("No image selected");
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        const dataURL = reader.result;
-
-        const updatedVisualData = {
-          name: "Etiket",
-          type: image.type,
-          size: image.size,
-          lastModified: image.lastModified,
-          lastModifiedDate: image.lastModifiedDate,
-          preview: URL.createObjectURL(image),
-          extension: image.name.split(".").pop(),
-          isUploaded: false,
-          isProcessing: false,
-          dataURL: dataURL,
-        };
-
-        resolve({ image, updatedVisualData });
-      };
-
-      reader.onerror = (error) => {
-        reject(error);
-      };
-
-      reader.readAsDataURL(image);
-    });
-
-    input.click();
-  });
-};
 
 const handleTextRecognition = async (image) => {
   return new Promise((resolve, reject) => {
@@ -89,7 +45,7 @@ function extractSerialNumber(input) {
     const formattedSerialNumberString = formattedSerialNumber(match[0]);
     return formattedSerialNumberString;
   }
-
+ 
   // Return null if no match is found
   return null;
 }

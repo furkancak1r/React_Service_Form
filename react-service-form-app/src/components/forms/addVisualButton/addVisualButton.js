@@ -57,6 +57,7 @@ export default function AddVisualButton() {
   return (
     <div>
       <Button
+        id="add-visual-button"
         className="add-visual-button"
         component="label"
         variant="contained"

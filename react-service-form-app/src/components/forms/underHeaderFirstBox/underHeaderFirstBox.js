@@ -8,20 +8,70 @@ import { useFormData } from "../../../contexts/formDataContext/formDataContext";
 import CameraEnhanceIcon from "@mui/icons-material/CameraEnhance";
 import { handleCameraEnhanceIcon } from "./underHeaderFirstBoxHelpers";
 import { useVisualData } from "../../../contexts/visualDataContext/visualDataContext";
+import { toast } from "react-toastify";
+import { usePreLoader } from "../../../contexts/preLoaderContext/preLoaderContext";
 
 export default function UnderHeaderFirstBox() {
   const { formData, FormDataFn } = useFormData();
   const { visualData, updateVisualData } = useVisualData();
+  const { updatePreLoaderData } = usePreLoader();
 
   const handleInputChange = (fieldName, event) => {
     const value = event.target.value;
     FormDataFn({ ...formData, [fieldName]: value });
   };
+  const getImage = () => {
+    return new Promise((resolve, reject) => {
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = "image/*";
+      input.multiple = false;
+      input.addEventListener("change", (event) => {
+        const files = event.target.files;
+        const image = files[0];
+
+        if (!image) {
+          reject("No image selected");
+          return;
+        }
+        updatePreLoaderData(true);
+
+        const reader = new FileReader();
+        reader.onload = () => {
+          const dataURL = reader.result;
+  
+          const updatedVisualData = {
+            name: "Etiket",
+            type: image.type,
+            size: image.size,
+            lastModified: image.lastModified,
+            lastModifiedDate: image.lastModifiedDate,
+            preview: URL.createObjectURL(image),
+            extension: image.name.split(".").pop(),
+            isUploaded: false,
+            isProcessing: false,
+            dataURL: dataURL,
+          };
+  
+          resolve({ image, updatedVisualData });
+        };
+  
+        reader.onerror = (error) => {
+          reject(error);
+        };
+  
+        reader.readAsDataURL(image);
+      });
+  
+      input.click();
+    });
+  };
+  
   const handleCameraEnhanceIconFn = async () => {
     try {
-      const { updatedVisualData, serialNo } = await handleCameraEnhanceIcon();
-      const serialNumber = "serialNumber";
-      FormDataFn({ ...formData, [serialNumber]: serialNo });
+      const { image, updatedVisualData } = await getImage();
+
+      const {serialNo } = await handleCameraEnhanceIcon(image, updatedVisualData);
 
       const filteredVisualData = visualData.filter(
         (item) => item.name !== "Etiket"
@@ -29,8 +79,24 @@ export default function UnderHeaderFirstBox() {
 
       // Yeni veriyi ekleyerek güncelle
       updateVisualData([...filteredVisualData, updatedVisualData]);
+
+      if (!serialNo) {
+        toast.error(
+          "Seri numarası bulunamadı, Lütfen manuel olarak giriniz. Girdiğiniz fotoğraf kaydedilmiştir. İsterseniz alt kısımdan silme işlemini gerçekleştirebilirsiniz."
+        );
+        // sayfanın sonuna kaydır
+        setTimeout(() => {
+          window.scrollTo(0, document.body.scrollHeight);
+        }, 1500);
+      } else {
+        const serialNumber = "serialNumber";
+        FormDataFn({ ...formData, [serialNumber]: serialNo });
+        toast.success("Seri numarası başarıyla eklendi. Lütfen kontrol ediniz.");
+      }
     } catch (error) {
       console.error(error);
+    }finally{
+      updatePreLoaderData(false);
     }
   };
 
