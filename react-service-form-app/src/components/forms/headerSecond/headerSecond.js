@@ -24,7 +24,6 @@ export default function HeaderSecond() {
       FormDataFn({ ...formData, [serviceNo]: "SRV1234567" });
     };
 
-
     setReportNo("1234567");
     setServiceNo("SRV1234567");
     getFormattedDate();

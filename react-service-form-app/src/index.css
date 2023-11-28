@@ -27,7 +27,8 @@ h6 {
 label {
   padding: 4px;
 }
-input[type="text"] {
+input[type="text"],
+input[type="number"] {
   background: transparent;
   color: whitesmoke;
   padding: 0;
