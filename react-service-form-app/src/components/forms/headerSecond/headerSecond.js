@@ -10,18 +10,19 @@ export default function HeaderSecond() {
   const [serviceNo, setServiceNo] = useState("");
 
   useEffect(() => {
-    const reportDate = "reportDate";
-    const reportNo = "reportNo";
-    const serviceNo = "serviceNo";
+ 
     const getFormattedDate = () => {
       const today = new Date();
       const day = String(today.getDate()).padStart(2, "0");
       const month = String(today.getMonth() + 1).padStart(2, "0");
       const year = today.getFullYear();
       setTodaysDate(`${day}/${month}/${year}`);
-      FormDataFn({ ...formData, [reportDate]: `${day}/${month}/${year}` });
-      FormDataFn({ ...formData, [reportNo]: "1234567" });
-      FormDataFn({ ...formData, [serviceNo]: "SRV1234567" });
+      FormDataFn({
+        ...formData,
+        reportDate: `${day}/${month}/${year}`,
+        reportNo: "1234567",
+        serviceNo: "SRV1234567",
+      });
     };
 
     setReportNo("1234567");

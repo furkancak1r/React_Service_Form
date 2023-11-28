@@ -9,3 +9,6 @@
 .under-header-first-box-container input[type="submit"] {
   max-width: 6rem;
 }
+.h-full{
+  height: 100%;
+}

@@ -5,13 +5,34 @@ import {
   UnderHeaderFirstBoxTurkishData,
 } from "./UnderHeaderFirstBoxDatas";
 import { useFormData } from "../../../contexts/formDataContext/formDataContext";
+import CameraEnhanceIcon from "@mui/icons-material/CameraEnhance";
+import { handleCameraEnhanceIcon } from "./underHeaderFirstBoxHelpers";
+import { useVisualData } from "../../../contexts/visualDataContext/visualDataContext";
 
 export default function UnderHeaderFirstBox() {
   const { formData, FormDataFn } = useFormData();
+  const { visualData, updateVisualData } = useVisualData();
 
   const handleInputChange = (fieldName, event) => {
     const value = event.target.value;
     FormDataFn({ ...formData, [fieldName]: value });
+  };
+  const handleCameraEnhanceIconFn = async () => {
+    try {
+      const { updatedVisualData, serialNo } = await handleCameraEnhanceIcon();
+      const serialNumber = "serialNumber";
+      FormDataFn({ ...formData, [serialNumber]: serialNo });
+
+      // Filtreleme işlemi: updatedVisualData.name değeri "Etiket" olanları filtrele
+      const filteredVisualData = visualData.filter(
+        (item) => item.name !== "Etiket"
+      );
+
+      // Yeni veriyi ekleyerek güncelle
+      updateVisualData([...filteredVisualData, updatedVisualData]);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -45,22 +66,31 @@ export default function UnderHeaderFirstBox() {
                 value={formData[UnderHeaderFirstBoxEnglishData[index]] || ""}
               />
             ) : (
-              <input
-                autoComplete="off"
-                id={UnderHeaderFirstBoxEnglishData[index]}
-                name={UnderHeaderFirstBoxEnglishData[index]}
-                type="text"
-                onChange={(e) =>
-                  handleInputChange(UnderHeaderFirstBoxEnglishData[index], e)
-                }
-                value={formData[UnderHeaderFirstBoxEnglishData[index]] || ""}
-                readOnly={[
-                  "customerTitle",
-                  "relatedPerson",
-                  "address",
-                  "branch",
-                ].includes(UnderHeaderFirstBoxEnglishData[index])} // Make the input read-only for specified fields
-              />
+              <div className="d-flex h-full justify-content-center align-items-center">
+                <input
+                  autoComplete="off"
+                  id={UnderHeaderFirstBoxEnglishData[index]}
+                  name={UnderHeaderFirstBoxEnglishData[index]}
+                  type="text"
+                  onChange={(e) =>
+                    handleInputChange(UnderHeaderFirstBoxEnglishData[index], e)
+                  }
+                  value={formData[UnderHeaderFirstBoxEnglishData[index]] || ""}
+                  readOnly={[
+                    "customerTitle",
+                    "relatedPerson",
+                    "address",
+                    "branch",
+                  ].includes(UnderHeaderFirstBoxEnglishData[index])}
+                />
+                {UnderHeaderFirstBoxEnglishData[index] === "serialNumber" && (
+                  <CameraEnhanceIcon
+                    id="cameraEnhanceIcon"
+                    className="m-1"
+                    onClick={() => handleCameraEnhanceIconFn()}
+                  />
+                )}
+              </div>
             )}
           </div>
         </div>
