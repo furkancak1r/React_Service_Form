@@ -23,7 +23,6 @@ export default function UnderHeaderFirstBox() {
       const serialNumber = "serialNumber";
       FormDataFn({ ...formData, [serialNumber]: serialNo });
 
-      // Filtreleme işlemi: updatedVisualData.name değeri "Etiket" olanları filtrele
       const filteredVisualData = visualData.filter(
         (item) => item.name !== "Etiket"
       );
