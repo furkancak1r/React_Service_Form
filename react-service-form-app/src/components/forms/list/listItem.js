@@ -13,7 +13,20 @@ export default function ListItem({ lineNumber }) {
       lineNumber: lineNumber,
     };
 
-    // Calculate total if both amount and unitPrice are provided
+    if (!updatedData.unit) {
+      updatedData = {
+        ...updatedData,
+        unit: "PIECE", 
+      };
+    }
+
+    if (!updatedData.currency) {
+      updatedData = {
+        ...updatedData,
+        currency: "TL",
+      };
+    }
+
     if (fieldName === "amount" || fieldName === "unitPrice") {
       const amount = updatedData.amount || 0;
       const unitPrice = updatedData.unitPrice || 0;
@@ -23,7 +36,6 @@ export default function ListItem({ lineNumber }) {
       };
     }
 
-    // Set the calculated total in the corresponding input field
     const totalInput = document.getElementById(`total-${lineNumber}`);
     if (totalInput) {
       totalInput.value = updatedData.total || 0;
@@ -31,6 +43,7 @@ export default function ListItem({ lineNumber }) {
 
     updateListItemData(lineNumber, updatedData);
   };
+
   const currencies = [
     { value: "TL", label: "TL" },
     { value: "USD", label: "USD" },
