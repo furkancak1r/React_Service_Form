@@ -64,7 +64,7 @@
 select.currency-select,.unit-select {
   color: var(--borderColorForCheckbox) !important;
   background-color: transparent !important;
-  border-radius: 10px;
+  border-radius: 5px;
   outline: none;
 }
 .currency-option,.unit-option {

@@ -39,7 +39,7 @@ export default function UnderHeaderFirstBox() {
         const reader = new FileReader();
         reader.onload = () => {
           const dataURL = reader.result;
-  
+
           const updatedVisualData = {
             name: "Etiket",
             type: image.type,
@@ -52,26 +52,29 @@ export default function UnderHeaderFirstBox() {
             isProcessing: false,
             dataURL: dataURL,
           };
-  
+
           resolve({ image, updatedVisualData });
         };
-  
+
         reader.onerror = (error) => {
           reject(error);
         };
-  
+
         reader.readAsDataURL(image);
       });
-  
+
       input.click();
     });
   };
-  
+
   const handleCameraEnhanceIconFn = async () => {
     try {
       const { image, updatedVisualData } = await getImage();
 
-      const {serialNo } = await handleCameraEnhanceIcon(image, updatedVisualData);
+      const { serialNo } = await handleCameraEnhanceIcon(
+        image,
+        updatedVisualData
+      );
 
       const filteredVisualData = visualData.filter(
         (item) => item.name !== "Etiket"
@@ -82,7 +85,7 @@ export default function UnderHeaderFirstBox() {
 
       if (!serialNo) {
         toast.error(
-          "Seri numarası bulunamadı, Lütfen manuel olarak giriniz. Girdiğiniz fotoğraf kaydedilmiştir. İsterseniz alt kısımdan silme işlemini gerçekleştirebilirsiniz."
+          "Seri numarası bulunamadı, Lütfen manuel olarak giriniz. Girdiğiniz etiket kaydedilmiştir. İsterseniz alt kısımdan silme işlemini gerçekleştirebilirsiniz."
         );
         // sayfanın sonuna kaydır
         setTimeout(() => {
@@ -91,11 +94,13 @@ export default function UnderHeaderFirstBox() {
       } else {
         const serialNumber = "serialNumber";
         FormDataFn({ ...formData, [serialNumber]: serialNo });
-        toast.success("Seri numarası başarıyla eklendi. Lütfen kontrol ediniz.");
+        toast.success(
+          "Seri numarası başarıyla eklendi. Lütfen kontrol ediniz."
+        );
       }
     } catch (error) {
       console.error(error);
-    }finally{
+    } finally {
       updatePreLoaderData(false);
     }
   };

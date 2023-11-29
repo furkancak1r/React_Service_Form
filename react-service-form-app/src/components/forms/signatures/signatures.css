@@ -140,6 +140,10 @@
 .signature-button-2 {
   color: var(--borderColorForCheckbox) !important;
   border-color: var(--borderColorForCheckbox) !important;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid var(--borderColorForCheckbox) !important;
+  font-size: 1rem;
 }
 .signature-button-1:hover,
 .signature-button-2:hover {
@@ -168,6 +172,7 @@
   .signature-button-1,
   .signature-button-2 {
     scale: 0.7;
+    font-size: 12px !important;
   }
 }
 @media screen and (min-width: 278px) and (max-width: 350px) {

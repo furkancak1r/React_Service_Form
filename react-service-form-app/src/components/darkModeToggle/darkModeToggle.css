@@ -88,7 +88,7 @@ body:has(#darkmode-toggle:checked) {
   background: whitesmoke;
   color: black;
   --borderColorForCheckbox: black;
-  --time-color-schema:normal;
+  --time-color-schema: normal;
 }
 body:has(#darkmode-toggle:checked) .box-borders {
   border: 1px solid black;
