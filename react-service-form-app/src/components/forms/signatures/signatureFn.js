@@ -1,28 +1,34 @@
 import React, { useRef, useState } from "react";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
-import { useFormData } from "../../../contexts/formDataContext/formDataContext";
+import { useVisualData } from "../../../contexts/visualDataContext/visualDataContext";
 
 import SignatureDialog from "./signatureDialog";
 
 export default function SignatureFn() {
-  const { formData, FormDataFn } = useFormData();
-
+  const { updateVisualData } = useVisualData();
   const sigPadRef1 = useRef(null);
   const sigPadRef2 = useRef(null);
+  const { visualData } = useVisualData();
 
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedSigPadRef, setSelectedSigPadRef] = useState(sigPadRef1);
-  const [formDataKey, setFormDataKey] = useState("");
+  const [signatureKey, setSignatureKey] = useState("");
 
   const handleSubmitClick = (selectedSigPadRef, key) => {
     setOpenDialog(true);
     setSelectedSigPadRef(selectedSigPadRef);
-    setFormDataKey(key);
+    setSignatureKey(key);
   };
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
+  const engineerTechnicianSignature = visualData.find(
+    (item) => item.name === "engineerTechnicianSignature"
+  );
+  const customerSignature = visualData.find(
+    (item) => item.name === "customerSignature"
+  );
 
   return (
     <div className="signatureFn-container row">
@@ -35,9 +41,14 @@ export default function SignatureFn() {
               handleSubmitClick(sigPadRef1, "engineerTechnicianSignature")
             }
           >
-            {formData.engineerTechnicianSignature
+            {visualData &&
+            visualData.length > 0 &&
+            visualData.some(
+              (data) => data.name === "engineerTechnicianSignature"
+            )
               ? `İmza Düzenle`
-              : `İmza Ekle`}{" "}
+              : `İmza Ekle`}
+
             <DriveFileRenameOutlineIcon />
           </button>
         </div>
@@ -52,13 +63,17 @@ export default function SignatureFn() {
           }}
           className="d-flex align-items-center box-borders-right box-borders-bottom box-borders-left"
         >
-          {formData.engineerTechnicianSignature && (
-            <img
-              src={formData.engineerTechnicianSignature}
-              alt="Saved Signature"
-              style={{ width: "100%", height: "100%" }}
-            />
-          )}
+          {visualData &&
+            visualData.length > 0 &&
+            visualData.some(
+              (data) => data.name === "engineerTechnicianSignature"
+            ) && (
+              <img
+                src={engineerTechnicianSignature?.dataURL}
+                alt="Saved Signature"
+                style={{ width: "100%", height: "100%" }}
+              />
+            )}
         </div>
       </div>
 
@@ -69,7 +84,9 @@ export default function SignatureFn() {
             className="signature-button-2 d-flex justify-content-center align-items-center p-2 m-2"
             onClick={() => handleSubmitClick(sigPadRef2, "customerSignature")}
           >
-            {formData.engineerTechnicianSignature
+            {visualData &&
+            visualData.length > 0 &&
+            visualData.some((data) => data.name === "customerSignature")
               ? `İmza Düzenle`
               : `İmza Ekle`}
             <DriveFileRenameOutlineIcon />
@@ -81,21 +98,23 @@ export default function SignatureFn() {
           style={{ width: "auto", height: "100%", position: "relative" }}
           className={`d-flex align-items-center box-borders-right box-borders-bottom box-borders-left`}
         >
-          {formData.customerSignature && (
-            <img
-              src={formData.customerSignature}
-              alt="Saved Signature"
-              style={{ width: "100%", height: "100%" }}
-            />
-          )}
+          {visualData &&
+            visualData.length > 0 &&
+            visualData.some((data) => data.name === "customerSignature") && (
+              <img
+                src={customerSignature?.dataURL}
+                alt="Saved Signature"
+                style={{ width: "100%", height: "100%" }}
+              />
+            )}
         </div>
       </div>
       <SignatureDialog
         openDialog={openDialog}
         handleCloseDialog={handleCloseDialog}
         sigPadRef={selectedSigPadRef}
-        FormDataFn={FormDataFn}
-        formDataKey={formDataKey}
+        updateVisualData={updateVisualData}
+        signatureKey={signatureKey}
       />
     </div>
   );

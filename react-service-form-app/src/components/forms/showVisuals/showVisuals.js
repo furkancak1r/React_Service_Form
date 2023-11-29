@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -12,6 +12,7 @@ import { useVisualData } from "../../../contexts/visualDataContext/visualDataCon
 export default function ShowVisuals() {
   const { visualData, updateVisualData } = useVisualData();
   const [selectedVisual, setSelectedVisual] = useState(null);
+  const [visualDataNew, setVisualDataNew] = useState([]);
 
   const handleDelete = (index) => {
     const updatedVisualData = [...visualData];
@@ -26,10 +27,18 @@ export default function ShowVisuals() {
   const handleCloseModal = () => {
     setSelectedVisual(null);
   };
-
+  useEffect(() => {
+    setVisualDataNew(
+      visualData.filter(
+        (item) =>
+          item.name !== "engineerTechnicianSignature" &&
+          item.name !== "customerSignature"
+      )
+    );
+  }, [visualData]);
   return (
     <div className="row visual-cards-container d-flex justify-content-start mt-3">
-      {visualData.map((visual, index) => (
+      {visualDataNew.map((visual, index) => (
         <div
           className="visual-cards-container-below col-12 col-md-3 mt-3"
           key={index}
@@ -69,10 +78,14 @@ export default function ShowVisuals() {
           </Card>
         </div>
       ))}
-      <Dialog disableScrollLock open={Boolean(selectedVisual)} onClose={handleCloseModal}>
+      <Dialog
+        disableScrollLock
+        open={Boolean(selectedVisual)}
+        onClose={handleCloseModal}
+      >
         {selectedVisual && (
           <img
-          className="img-fluid"
+            className="img-fluid"
             src={selectedVisual.preview}
             alt={selectedVisual.name}
             style={{ maxWidth: "100%", maxHeight: "100%" }}
