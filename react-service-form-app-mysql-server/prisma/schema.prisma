@@ -1,11 +1,50 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// Bu sizin Prisma şema dosyanız,
+// belgelerde daha fazla bilgi edinin: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model formdata {
+  id                            Int      @id @default(autoincrement())
+  reportNo                      String
+  serviceNo                     String
+  outOfWarranty                 Boolean
+  withinWarranty                Boolean
+  freeService                   Boolean?
+  paidService                   Boolean?
+  contractMaintenance           Boolean?
+  withMaterial                  Boolean?
+  discoveryDetection            Boolean?
+  serialNumber                  String?
+  productDescription            String?
+  productBrand                  String?
+  productCategory               String?
+  model                         String?
+  firstTechnician               String?
+  arrivalTime                   DateTime
+  departureTime                 DateTime
+  serviceStartTime              DateTime
+  serviceEndTime                DateTime
+  totalDistance                 Int
+  coolingFailure                Boolean?
+  powerFailure                  Boolean?
+  assembly                      Boolean?
+  plumbingMalfunction           Boolean?
+  renovation                    Boolean?
+  maintenance                   Boolean?
+  discovery                     Boolean?
+  another                       String?
+  malfunctionDefinition         String
+  defectivePartSerialNumber     String?
+  additionalThingsToDo          String?
+  engineerTechnicianNameSurname String?
+  customerNameSurname           String?
+  created_at                    DateTime @default(now())
+  updated_at                    DateTime @updatedAt
 }
