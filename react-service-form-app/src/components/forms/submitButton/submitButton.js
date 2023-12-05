@@ -12,7 +12,7 @@ import {
   uploadListItemData,
 } from "../../../api/dataExport";
 import { useVisualData } from "../../../contexts/visualDataContext/visualDataContext";
-
+import { usePreLoader } from "../../../contexts/preLoaderContext/preLoaderContext";
 const checkMissingFields = (formData) => {
   return fieldDefinitions.filter(
     (field) => !formData[field.id] || formData[field.id].length < 1
@@ -20,10 +20,10 @@ const checkMissingFields = (formData) => {
 };
 
 export default function SubmitButton() {
-  const { visualData } = useVisualData();
+  const { visualData, updateVisualData } = useVisualData();
   const { formData } = useFormData();
   const { listItemData } = useListItemData();
-
+  const { updatePreLoaderData } = usePreLoader();
   const handleMissingFields = () => {
     const missingFields = checkMissingFields(formData);
 
@@ -48,26 +48,21 @@ export default function SubmitButton() {
     if (handleMissingFields()) {
       return;
     }
-    const responseFromUloadFormData = await uploadFormData(formData);
-    if (responseFromUloadFormData) {
+    updatePreLoaderData(true);
+
+    try {
+      await Promise.all([
+        uploadFormData(formData),
+        uploadVisualData(visualData),
+        uploadListItemData(listItemData),
+      ]);
+
       toast.success("Form başarıyla gönderildi.");
-    } else {
+    } catch (error) {
       toast.error("Form gönderilirken bir hata oluştu.");
+    } finally {
+      updatePreLoaderData(false);
     }
-    // const responseFromUloadFormData = await uploadFormData(formData);
-    // const responseFromUloadVisualData = await uploadVisualData(visualData);
-    // const responseFromUloadListItemData = await uploadListItemData(
-    //   listItemData
-    // );
-    // if (
-    //   responseFromUloadFormData &&
-    //   responseFromUloadVisualData &&
-    //   responseFromUloadListItemData
-    // ) {
-    //   toast.success("Form başarıyla gönderildi.");
-    // } else {
-    //   toast.error("Form gönderilirken bir hata oluştu.");
-    // }
   };
 
   return (

@@ -10,16 +10,19 @@ export default function HeaderSecond() {
   const [serviceNo, setServiceNo] = useState("");
 
   useEffect(() => {
- 
     const getFormattedDate = () => {
       const today = new Date();
+      // Add 3 hours to the date object to account for the local time zone
+      today.setHours(today.getHours() + 3);
       const day = String(today.getDate()).padStart(2, "0");
       const month = String(today.getMonth() + 1).padStart(2, "0");
       const year = today.getFullYear();
-      setTodaysDate(`${day}/${month}/${year}`);
+      const formattedDate = `${day}/${month}/${year}`;
+      const isoDate = today.toISOString();
+      setTodaysDate(formattedDate);
       FormDataFn({
         ...formData,
-        reportDate: `${day}/${month}/${year}`,
+        reportDate: isoDate,
         reportNo: "1234567",
         serviceNo: "SRV1234567",
       });
@@ -30,6 +33,7 @@ export default function HeaderSecond() {
     getFormattedDate();
     // eslint-disable-next-line
   }, []);
+
 
   const getHeaderFirstRowClassName = () => {
     if (window.innerWidth <= 620) {

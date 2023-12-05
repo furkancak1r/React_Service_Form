@@ -1,63 +1,57 @@
 import axios from "axios";
 import {
-    FORM_DATA_UPLOAD_URL,
-    VISUAL_DATA_UPLOAD_URL,
-    LIST_ITEM_DATA_UPLOAD_URL,
+  FORM_DATA_UPLOAD_URL,
+  VISUAL_DATA_UPLOAD_URL,
+  LIST_ITEM_DATA_UPLOAD_URL,
 } from "../constants/apiUrlAddresses";
 
-export const uploadFormData = (data) => {
+export const uploadFormData = async (data) => {
+  try {
     const jsonData = JSON.stringify(data);
-    axios
-        .post(FORM_DATA_UPLOAD_URL, jsonData, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-        .then((response) => {
-            if (response.status === 200) {
-                return true;
-            }
-        })
-        .catch((error) => {
-            console.error(error);
-            return false;
-        });
+    const response = await axios.post(FORM_DATA_UPLOAD_URL, jsonData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.status === 200) {
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  return false;
 };
 
-export const uploadVisualData = (data) => {
+export const uploadVisualData = async (data) => {
+  try {
     const jsonData = JSON.stringify(data);
-    axios
-        .post(VISUAL_DATA_UPLOAD_URL, jsonData, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-        .then((response) => {
-            if (response.status === 200) {
-                return true;
-            }
-        })
-        .catch((error) => {
-            console.error(error);
-            return false;
-        });
+    const response = await axios.post(VISUAL_DATA_UPLOAD_URL, jsonData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.status === 200) {
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  return false;
 };
 
-export const uploadListItemData = (data) => {
+export const uploadListItemData = async (data) => {
+  try {
     const jsonData = JSON.stringify(data);
-    axios
-        .post(LIST_ITEM_DATA_UPLOAD_URL, jsonData, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-        .then((response) => {
-            if (response.status === 200) {
-                return true;
-            }
-        })
-        .catch((error) => {
-            console.error(error);
-            return false;
-        });
+    const response = await axios.post(LIST_ITEM_DATA_UPLOAD_URL, jsonData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.status === 200) {
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  return false;
 };

@@ -189,7 +189,7 @@ export const renderTotalDistanceLabelAndInput = (handleInputChange) => {
               autoComplete="off"
               id="totalDistance"
               name="totalDistance"
-              type="text"
+              type="number"
               onChange={(e) => handleInputChange("totalDistance", e)}
               onInput={(e) =>
                 (e.target.value = e.target.value.replace(/\D/g, ""))

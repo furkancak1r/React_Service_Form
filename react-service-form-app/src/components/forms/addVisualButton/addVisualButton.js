@@ -4,9 +4,10 @@ import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useVisualData } from "../../../contexts/visualDataContext/visualDataContext";
-
+import { useFormData } from "../../../contexts/formDataContext/formDataContext";
 export default function AddVisualButton() {
   const { visualData, updateVisualData } = useVisualData();
+  const { formData } = useFormData();
   const VisuallyHiddenInput = styled("input")({
     clip: "rect(0 0 0 0)",
     clipPath: "inset(50%)",
@@ -38,6 +39,8 @@ export default function AddVisualButton() {
 
     Promise.all(promises).then((dataURLs) => {
       const updatedVisualData = files.map((file, index) => ({
+        reportNo: formData.reportNo,
+        serviceNo: formData.serviceNo,
         name: file.name,
         type: file.type,
         size: file.size,

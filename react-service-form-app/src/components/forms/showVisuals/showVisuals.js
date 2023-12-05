@@ -14,10 +14,10 @@ export default function ShowVisuals() {
   const [selectedVisual, setSelectedVisual] = useState(null);
   const [visualDataNew, setVisualDataNew] = useState([]);
 
-  const handleDelete = (index) => {
-    const updatedVisualData = [...visualData];
-    updatedVisualData.splice(index, 1);
-    updateVisualData(updatedVisualData);
+  const handleDelete = (visual) => {
+    // silinmesi istenen görsel nesnesini parametre olarak alır
+    const updatedVisualData = visualData.filter((item) => item !== visual); // silinmesi istenen görsel nesnesi hariç tüm öğeleri içeren yeni bir dizi oluşturur
+    updateVisualData(updatedVisualData); // yeni diziyi görsel veriler olarak günceller
   };
 
   const handleOpenModal = (visual) => {
@@ -70,7 +70,7 @@ export default function ShowVisuals() {
               <Button
                 size="small"
                 className="delete-button"
-                onClick={() => handleDelete(index)}
+                onClick={() => handleDelete(visual)}
               >
                 Sil
               </Button>

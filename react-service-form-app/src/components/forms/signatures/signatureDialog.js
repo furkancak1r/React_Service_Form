@@ -5,7 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import SignatureCanvas from "react-signature-canvas";
 import { useVisualData } from "../../../contexts/visualDataContext/visualDataContext";
-
+import { useFormData } from "../../../contexts/formDataContext/formDataContext";
 export default function SignatureDialog({
   openDialog,
   handleCloseDialog,
@@ -14,6 +14,8 @@ export default function SignatureDialog({
   updateVisualData,
 }) {
   const { visualData } = useVisualData();
+  const { formData } = useFormData();
+  const { serviceNo, reportNo } = formData;
   const getDataURLInfo = (image) => {
     if (image) {
       // Extract base64 data
@@ -59,6 +61,8 @@ export default function SignatureDialog({
         data.name === signatureKey
           ? {
               ...data,
+              reportNo: reportNo,
+              serviceNo: serviceNo,
               name: signatureKey,
               type: "image/png",
               size: info.size,
@@ -76,6 +80,8 @@ export default function SignatureDialog({
       // If the name doesn't match, add a new object
       if (!visualData.some((data) => data.name === signatureKey)) {
         updatedArray.push({
+          reportNo: reportNo,
+          serviceNo: serviceNo,
           name: signatureKey,
           type: "image/png",
           size: info.size,

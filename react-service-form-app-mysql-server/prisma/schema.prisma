@@ -31,6 +31,7 @@ model formdata {
   departureTime                 DateTime
   serviceStartTime              DateTime
   serviceEndTime                DateTime
+  reportDate                    DateTime
   totalDistance                 Int
   coolingFailure                Boolean?
   powerFailure                  Boolean?
@@ -47,4 +48,19 @@ model formdata {
   customerNameSurname           String?
   created_at                    DateTime @default(now())
   updated_at                    DateTime @updatedAt
+}
+
+model listItemData {
+  id                        Int      @id @default(autoincrement())
+  descriptionMaterialUsed   String
+  lineNumber                Int
+  unit                      String
+  currency                  String
+  reportNo                  String
+  serviceNo                 String
+  amount                    Int
+  total                     Int
+  unitPrice                 Int
+  created_at                DateTime @default(now())
+  updated_at                DateTime @updatedAt
 }

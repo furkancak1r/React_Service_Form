@@ -1,19 +1,16 @@
 import Tesseract from "tesseract.js";
 
-
-export const handleCameraEnhanceIcon = async (image, updatedVisualData ) => {
-
+export const handleCameraEnhanceIcon = async (image, updatedVisualData) => {
   try {
     const result = await handleTextRecognition(image);
     const serialNo = extractSerialNumber(result);
-  
-    return { updatedVisualData, serialNo };
+
+    return { serialNo };
   } catch (error) {
     console.error(error);
     throw error; // Re-throw the error to handle it at the higher level
   }
 };
-
 
 const handleTextRecognition = async (image) => {
   return new Promise((resolve, reject) => {
@@ -41,11 +38,10 @@ function extractSerialNumber(input) {
 
   // If a match is found, extract the relevant part and remove unnecessary characters
   if (match) {
- 
     const formattedSerialNumberString = formattedSerialNumber(match[0]);
     return formattedSerialNumberString;
   }
- 
+
   // Return null if no match is found
   return null;
 }

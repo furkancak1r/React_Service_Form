@@ -1,22 +1,30 @@
 import React from "react";
 import { useListItemData } from "../../../contexts/listItemsContext/listItemsContext";
-
+import { useFormData } from "../../../contexts/formDataContext/formDataContext";
+import { units, currencies } from "../../../constants/helpers";
 export default function ListItem({ lineNumber }) {
   const { listItemData, updateListItemData } = useListItemData();
-
+  const { formData } = useFormData();
+  const { reportNo, serviceNo } = formData;
   const handleInputChange = (fieldName, event) => {
     let value = event.target.value;
     const currentData = listItemData[lineNumber - 1];
     let updatedData = {
       ...currentData,
-      [fieldName]: value,
+      [fieldName]:
+        fieldName === "lineNumber" ||
+        fieldName === "amount" ||
+        fieldName === "total" ||
+        fieldName === "unitPrice"
+          ? parseInt(value)
+          : value,
       lineNumber: lineNumber,
     };
 
     if (!updatedData.unit) {
       updatedData = {
         ...updatedData,
-        unit: "PIECE", 
+        unit: "PIECE",
       };
     }
 
@@ -28,11 +36,13 @@ export default function ListItem({ lineNumber }) {
     }
 
     if (fieldName === "amount" || fieldName === "unitPrice") {
-      const amount = updatedData.amount || 0;
-      const unitPrice = updatedData.unitPrice || 0;
+      const amount = parseInt(updatedData.amount) || 0;
+      const unitPrice = parseInt(updatedData.unitPrice) || 0;
       updatedData = {
         ...updatedData,
         total: amount * unitPrice,
+        reportNo: reportNo,
+        serviceNo: serviceNo,
       };
     }
 
@@ -43,22 +53,6 @@ export default function ListItem({ lineNumber }) {
 
     updateListItemData(lineNumber, updatedData);
   };
-
-  const currencies = [
-    { value: "TL", label: "TL" },
-    { value: "USD", label: "USD" },
-    { value: "EUR", label: "EUR" },
-    { value: "GBP", label: "GBP" },
-    { value: "JPY", label: "JPY" },
-    { value: "CAD", label: "CAD" },
-  ];
-  const units = [
-    { value: "PIECE", label: "ADET" },
-    { value: "KG", label: "KG" },
-    { value: "METER", label: "M" },
-    { value: "CMMETER", label: "CM" },
-    { value: "MMMETER", label: "MM" },
-  ];
 
   return (
     <div className="row">

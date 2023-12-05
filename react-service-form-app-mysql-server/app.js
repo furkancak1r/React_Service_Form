@@ -1,26 +1,21 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const {uploadFormData} = require("./connections/elements.js");
-// const formDataImport = require("./prisma/connections/formData.js");
+const bodyParser = require("body-parser");
+const {
+  handleFormDataUpload,
+  handleVisualDataUpload,
+  handleListItemDataUpload
+} = require("./connections/functions.js");
 
 app.use(cors());
+app.use(bodyParser.json({ limit: "500mb" }));
+app.use(bodyParser.urlencoded({ limit: "500mb", extended: true }));
 
+app.post("/api/form-data-upload", handleFormDataUpload);
+app.post("/api/visual-data-upload", handleVisualDataUpload);
+app.post("/api/list-item-data-upload", handleListItemDataUpload);
 
-app.use(express.json()); // Add this line to parse JSON data
-
-app.post("/api/form-data-upload", async (req, res) => {
-  const data = req.body;
- const response= await uploadFormData(data);
- if (response) {
-  res.status(200).json({ status: "success", data: response });
-} else {
-  res.status(400).json({ status: "error", error: "Something went wrong" });
-}
-
-});
-
-app.use(cors());
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {

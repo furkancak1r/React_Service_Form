@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./underHeaderFirstBox.css";
 import {
   UnderHeaderFirstBoxEnglishData,
@@ -10,7 +10,6 @@ import { handleCameraEnhanceIcon } from "./underHeaderFirstBoxHelpers";
 import { useVisualData } from "../../../contexts/visualDataContext/visualDataContext";
 import { toast } from "react-toastify";
 import { usePreLoader } from "../../../contexts/preLoaderContext/preLoaderContext";
-
 export default function UnderHeaderFirstBox() {
   const { formData, FormDataFn } = useFormData();
   const { visualData, updateVisualData } = useVisualData();
@@ -68,9 +67,9 @@ export default function UnderHeaderFirstBox() {
   };
 
   const handleCameraEnhanceIconFn = async () => {
+    const { serviceNo, reportNo } = formData;
     try {
       const { image, updatedVisualData } = await getImage();
-
       const { serialNo } = await handleCameraEnhanceIcon(
         image,
         updatedVisualData
@@ -79,9 +78,14 @@ export default function UnderHeaderFirstBox() {
       const filteredVisualData = visualData.filter(
         (item) => item.name !== "Etiket"
       );
+      const updatedData = {
+        ...updatedVisualData,
+        serviceNo: serviceNo,
+        reportNo: reportNo,
+      };
 
       // Yeni veriyi ekleyerek güncelle
-      updateVisualData([...filteredVisualData, updatedVisualData]);
+      updateVisualData([...filteredVisualData, updatedData]);
 
       if (!serialNo) {
         toast.error(
