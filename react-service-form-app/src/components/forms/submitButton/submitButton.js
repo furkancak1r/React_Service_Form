@@ -20,7 +20,7 @@ const checkMissingFields = (formData) => {
 };
 
 export default function SubmitButton() {
-  const { visualData, updateVisualData } = useVisualData();
+  const { visualData } = useVisualData();
   const { formData } = useFormData();
   const { listItemData } = useListItemData();
   const { updatePreLoaderData } = usePreLoader();

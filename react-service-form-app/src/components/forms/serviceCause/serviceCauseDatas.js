@@ -16,4 +16,4 @@ export const checkboxDatasServiceCause5 = {
 };
 export const checkboxDatasServiceCause6 = { id: "assembly", text: "Montaj" };
 
-export const checkboxDatasServiceCause7 = { id: "Maintenance", text: "Bakım" };
+export const checkboxDatasServiceCause7 = { id: "maintenance", text: "Bakım" };

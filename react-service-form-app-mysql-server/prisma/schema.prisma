@@ -21,6 +21,7 @@ model formdata {
   contractMaintenance           Boolean?
   withMaterial                  Boolean?
   discoveryDetection            Boolean?
+  orderNumber                   String?
   serialNumber                  String?
   productDescription            String?
   productBrand                  String?
@@ -41,6 +42,7 @@ model formdata {
   maintenance                   Boolean?
   discovery                     Boolean?
   another                       String?
+  discoveryNumber               String?
   malfunctionDefinition         String
   defectivePartSerialNumber     String?
   additionalThingsToDo          String?
