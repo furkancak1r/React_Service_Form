@@ -8,6 +8,7 @@ export default function ListItem({ lineNumber }) {
   const { reportNo, serviceNo } = formData;
   const handleInputChange = (fieldName, event) => {
     let value = event.target.value;
+    value = value < 0 ? 0 : value;
     const currentData = listItemData[lineNumber - 1];
     let updatedData = {
       ...currentData,
@@ -83,6 +84,7 @@ export default function ListItem({ lineNumber }) {
             type="number"
             className="text-center"
             onChange={(e) => handleInputChange("amount", e)}
+            min="0"
           />
         </div>
       </div>
@@ -115,6 +117,7 @@ export default function ListItem({ lineNumber }) {
             type="number"
             className="text-center"
             onChange={(e) => handleInputChange("unitPrice", e)}
+            min="0"
           />
         </div>
       </div>
@@ -148,6 +151,7 @@ export default function ListItem({ lineNumber }) {
             className="text-center"
             onChange={(e) => handleInputChange("total", e)}
             disabled={true}
+            min="0"
           />
         </div>
       </div>
