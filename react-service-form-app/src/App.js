@@ -12,27 +12,33 @@ import { VisualDataProvider } from "./contexts/visualDataContext/visualDataConte
 import "react-toastify/dist/ReactToastify.css";
 import PreLoader from "./components/preLoader/preLoader";
 import { PreLoaderProvider } from "./contexts/preLoaderContext/preLoaderContext";
-
+import AdminLoginPage from "./components/admin/adminLoginPage/adminLoginPage";
+import { AuthProvider } from "./contexts/authContext/authContext";
 export default function App() {
   return (
     <div className="App">
-      <PreLoaderProvider>
-      <PreLoader />
-
-        <FormDataProvider>
-          <ListItemDataProvider>
-            <VisualDataProvider>
-              <ToastContainer />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/not-found" element={<NotFound />} />
-                <Route path="/internal-error" element={<HandleServerError />} />
-                <Route path="*" element={<Navigate to="/not-found" />} />
-              </Routes>
-            </VisualDataProvider>
-          </ListItemDataProvider>
-        </FormDataProvider>
-      </PreLoaderProvider>
+      <AuthProvider>
+        <PreLoaderProvider>
+          <PreLoader />
+          <FormDataProvider>
+            <ListItemDataProvider>
+              <VisualDataProvider>
+                <ToastContainer />
+                <Routes>
+                  <Route path="/admin-login" element={<AdminLoginPage />} />
+                  <Route path="/" element={<Home />} />
+                  <Route path="/not-found" element={<NotFound />} />
+                  <Route
+                    path="/internal-error"
+                    element={<HandleServerError />}
+                  />
+                  <Route path="*" element={<Navigate to="/not-found" />} />
+                </Routes>
+              </VisualDataProvider>
+            </ListItemDataProvider>
+          </FormDataProvider>
+        </PreLoaderProvider>
+      </AuthProvider>
     </div>
   );
 }

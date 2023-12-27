@@ -1,12 +1,12 @@
 .box-borders {
   border: 1px solid whitesmoke;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.main-form-container h1,
+.main-form-container h2,
+.main-form-container h3,
+.main-form-container h4,
+.main-form-container h5,
+.main-form-container h6 {
   margin: 0 !important;
   padding: 4px;
 }
@@ -24,11 +24,11 @@ h6 {
   border-right: 1px solid whitesmoke;
 }
 
-label {
+.main-form-container label {
   padding: 4px;
 }
-input[type="text"],
-input[type="number"] {
+.main-form-container input[type="text"],
+.main-form-container input[type="number"] {
   background: transparent;
   color: whitesmoke;
   padding: 0;
@@ -40,7 +40,7 @@ input[type="number"] {
   border: none !important;
   outline: 0 !important;
 }
-textarea {
+.main-form-container textarea {
   background: transparent;
   padding: 0;
   margin: 0;
@@ -53,14 +53,14 @@ textarea {
   max-height: 200px;
   cursor: auto;
 }
-textarea::-webkit-scrollbar {
+.main-form-container textarea::-webkit-scrollbar {
   width: 12px;
   background-color: whitesmoke;
 }
-textarea::-webkit-scrollbar-thumb {
+.main-form-container textarea::-webkit-scrollbar-thumb {
   background-color: rgb(58, 58, 58);
 }
-textarea::-webkit-scrollbar-track {
+.main-form-container textarea::-webkit-scrollbar-track {
   background-color: whitesmoke;
 }
 
@@ -68,18 +68,18 @@ textarea::-webkit-scrollbar-track {
   --borderColorForCheckbox: whitesmoke;
   --time-color-schema: dark;
 }
-input[type="time"] {
+.main-form-container input[type="time"] {
   background-color: transparent;
   border: none;
   outline: 0;
 }
 @media screen and (max-width: 500px) {
-  label {
+  .main-form-container label {
     font-size: small;
   }
 }
 
-textarea {
+.main-form-container textarea {
   padding-left: 4px;
   padding-right: 4px;
 }

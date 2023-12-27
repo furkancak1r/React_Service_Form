@@ -66,3 +66,9 @@ model listItemData {
   created_at                DateTime @default(now())
   updated_at                DateTime @updatedAt
 }
+
+model serviceFormAdminUsersTable {
+  id            Int    @id @default(autoincrement())
+  username      String @unique
+  passwordHashed String
+}
